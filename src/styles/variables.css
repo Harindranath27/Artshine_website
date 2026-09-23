@@ -1,0 +1,104 @@
+/* ==========================================================================
+   ARTSHINE DESIGN SYSTEM - DESIGN TOKENS
+   Reverse-Engineered from the Reference Visual Direction
+   ========================================================================== */
+
+:root {
+  /* Brand Primary Colors */
+  --bg-page: #FAF8F2; /* Warm ivory / off-white paper canvas */
+  --bg-surface: #FFFFFF;
+  --bg-subtle: #F3EFE6;
+  --bg-card: #FFFFFF;
+  --bg-navy-cta: #0C213D; /* Deep ink navy */
+  --bg-navy-dark: #07172C;
+
+  /* Text Colors */
+  --text-primary: #0F2038; /* Ink navy dark text */
+  --text-secondary: #4A5568; /* Warm muted charcoal */
+  --text-muted: #718096;
+  --text-light: #F7FAFC;
+  --text-white: #FFFFFF;
+
+  /* Primary Brand Accent (Coral / Pink-Red) */
+  --accent-coral: #E63956;
+  --accent-coral-hover: #D42B48;
+  --accent-coral-subtle: #FFECEF;
+
+  /* Secondary Accents */
+  --accent-yellow: #FFB703;
+  --accent-yellow-light: #FFF4D2;
+  --accent-teal: #00A896;
+  --accent-teal-light: #E0F5F2;
+  --accent-green: #48BB78;
+  --accent-green-light: #E6F8ED;
+  --accent-blue: #3182CE;
+  --accent-blue-light: #EBF8FF;
+  --accent-pink-soft: #FDE2E4;
+
+  /* Typography */
+  --font-brush: 'Caveat', 'Patrick Hand', cursive;
+  --font-display: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Typography Scale */
+  --text-xs: 0.75rem;     /* 12px */
+  --text-sm: 0.875rem;    /* 14px */
+  --text-base: 1rem;      /* 16px */
+  --text-lg: 1.125rem;    /* 18px */
+  --text-xl: 1.25rem;     /* 20px */
+  --text-2xl: 1.5rem;     /* 24px */
+  --text-3xl: 1.875rem;   /* 30px */
+  --text-4xl: 2.25rem;    /* 36px */
+  --text-5xl: 3rem;       /* 48px */
+  --text-6xl: 3.75rem;    /* 60px */
+  --text-hero: clamp(2.5rem, 5.5vw, 4.2rem);
+
+  /* Spacing Scale */
+  --space-1: 0.25rem;  /* 4px */
+  --space-2: 0.5rem;   /* 8px */
+  --space-3: 0.75rem;  /* 12px */
+  --space-4: 1rem;     /* 16px */
+  --space-5: 1.25rem;  /* 20px */
+  --space-6: 1.5rem;   /* 24px */
+  --space-8: 2rem;     /* 32px */
+  --space-10: 2.5rem;  /* 40px */
+  --space-12: 3rem;    /* 48px */
+  --space-16: 4rem;    /* 64px */
+  --space-20: 5rem;    /* 80px */
+  --space-24: 6rem;    /* 96px */
+
+  /* Borders & Radius */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-pill: 9999px;
+
+  /* Shadows */
+  --shadow-subtle: 0 4px 20px -2px rgba(15, 32, 56, 0.05);
+  --shadow-card: 0 10px 30px -5px rgba(15, 32, 56, 0.07);
+  --shadow-hover: 0 20px 35px -8px rgba(15, 32, 56, 0.12);
+  --shadow-polaroid: 0 12px 28px rgba(0, 0, 0, 0.12);
+
+  /* Max Widths */
+  --container-max: 1240px;
+  --container-wide: 1360px;
+  --container-narrow: 840px;
+
+  /* Transitions */
+  --transition-fast: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-smooth: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Heights & Interactive Tokens */
+  --btn-height: 48px;
+  --btn-height-sm: 40px;
+  --focus-ring: 0 0 0 3px rgba(230, 57, 86, 0.35);
+
+  /* Z-Index Layers */
+  --z-base: 1;
+  --z-card: 2;
+  --z-header: 1000;
+  --z-drawer: 1100;
+  --z-modal-backdrop: 1200;
+  --z-modal: 1210;
+}

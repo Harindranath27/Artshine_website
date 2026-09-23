@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 68" fill="none" class="artshine-logo-svg">
+  <!-- Sun & Brush Icon Mark -->
+  <g transform="translate(4, 4)">
+    <!-- Swirling paint strokes -->
+    <path d="M28 6C15 6 6 16 6 29C6 42 16 52 29 52C36 52 42 49 46 44C38 46 30 43 25 37C19 30 19 20 25 13C28 9 33 7 38 7C34 6 31 6 28 6Z" fill="#E63956" />
+    <path d="M30 10C21 11 13 18 13 28C13 38 21 46 31 46C37 46 42 43 45 39C38 41 31 38 27 33C22 27 22 19 27 13C28 12 29 11 30 10Z" fill="#FFB703" />
+    <path d="M32 14C25 15 19 20 19 28C19 35 25 41 32 41C36 41 40 39 42 36C37 37 32 35 29 31C25 27 25 21 29 16C30 15 31 14 32 14Z" fill="#00A896" />
+    <path d="M34 18C29 19 25 23 25 28C25 33 29 37 34 37C37 37 39 35 40 33C37 34 33 33 31 30C28 27 28 23 31 20C32 19 33 18 34 18Z" fill="#3182CE" />
+    
+    <!-- Mini sun rays -->
+    <circle cx="39" cy="15" r="4.5" fill="#FFB703"/>
+    <path d="M39 6V9M39 21V24M30 15H33M45 15H48M33 9L35 11M43 19L45 21M33 21L35 19M43 11L45 9" stroke="#FFB703" stroke-width="2" stroke-linecap="round"/>
+  </g>
+
+  <!-- Brand Typography -->
+  <text x="64" y="38" font-family="'Outfit', 'Plus Jakarta Sans', sans-serif" font-weight="900" font-size="28" fill="#0F2038" letter-spacing="1.5">ARTSHINE</text>
+  <text x="65" y="52" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="7.5" fill="#E63956" letter-spacing="2.2">CREATIVE ART LEARNING PLATFORM</text>
+</svg>
