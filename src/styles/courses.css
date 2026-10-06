@@ -1,0 +1,851 @@
+/* ==========================================================================
+   ARTSHINE COURSES — ART SCHOOL COURSE CATALOGUE
+   Bespoke Editorial Visual Language:
+   1. EDITORIAL ART HERO (Large Real Artwork Composition, Layered Paper, Tape, Paint & Doodles)
+   2. CHAPTER 01 — DRAW • SHADE • SKETCH (Editorial craft board, 5 courses)
+   3. TRANSITION 1 (Hand-drawn pencil line travels into watercolour wash)
+   4. CHAPTER 02 — PAINT WITH COLOUR (3 tactile medium compositions: Watercolour, Acrylic, Pastels)
+   5. TRANSITION 2 (Watercolour bleed into geometric mandala motif)
+   6. CHAPTER 03 — PATTERNS • CULTURE • IMAGINATION (Museum exhibition displays, 2 courses)
+   7. BIG ARTISTIC MOMENT ("There is no one way to make art.")
+   8. FINAL ENQUIRY (Found something you'd like to try?)
+   ========================================================================== */
+
+.coursebook-viewport {
+  background-color: #FAF8F2;
+  color: #1A202C;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  font-family: var(--font-body);
+}
+
+/* Washi Masking Tape Accent */
+.art-washi-tape {
+  position: absolute;
+  height: 24px;
+  background: rgba(255, 238, 196, 0.94);
+  border-left: 2px dashed rgba(217, 119, 6, 0.45);
+  border-right: 2px dashed rgba(217, 119, 6, 0.45);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  pointer-events: none;
+  z-index: 10;
+  backdrop-filter: blur(2px);
+}
+
+.tape-coral {
+  background: rgba(255, 222, 230, 0.94);
+  border-color: rgba(230, 57, 86, 0.45);
+}
+
+.tape-teal {
+  background: rgba(216, 245, 240, 0.94);
+  border-color: rgba(0, 168, 150, 0.45);
+}
+
+.tape-yellow {
+  background: rgba(255, 244, 206, 0.94);
+  border-color: rgba(255, 183, 3, 0.5);
+}
+
+/* Metal Paperclip Accent */
+.metal-paperclip {
+  position: absolute;
+  width: 14px;
+  height: 38px;
+  border: 3px solid #718096;
+  border-radius: 8px;
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.2);
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* ==========================================================================
+   1. EDITORIAL ART HERO — ART SCHOOL COURSE CATALOGUE
+   Large real artwork, layered paper mounts, subtle annotations, asymmetric composition
+   ========================================================================== */
+.courses-catalogue-hero {
+  position: relative;
+  padding: clamp(2.5rem, 6vw, 4.5rem) 1.25rem clamp(3rem, 6vw, 5rem);
+  background:
+    radial-gradient(circle at 85% 15%, rgba(255, 183, 3, 0.12) 0%, transparent 45%),
+    radial-gradient(circle at 15% 85%, rgba(0, 168, 150, 0.09) 0%, transparent 40%),
+    linear-gradient(180deg, #FAF8F2 0%, #FFFDF9 60%, #FAF6EE 100%);
+  border-bottom: 1px solid rgba(15, 32, 56, 0.06);
+  overflow: hidden;
+}
+
+.catalogue-hero-container {
+  max-width: 1240px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  align-items: center;
+  gap: clamp(2.5rem, 5vw, 5rem);
+  position: relative;
+  z-index: 2;
+}
+
+/* Left Editorial Header Column */
+.catalogue-hero-header {
+  position: relative;
+  z-index: 3;
+}
+
+.catalogue-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.4rem 1.1rem;
+  background: #FFFFFF;
+  border-radius: var(--radius-pill);
+  box-shadow: 0 3px 12px rgba(15, 32, 56, 0.06);
+  border: 1px solid rgba(15, 32, 56, 0.08);
+  margin-bottom: 1.5rem;
+}
+
+.catalogue-badge-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent-coral);
+}
+
+.catalogue-badge-text {
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+}
+
+.catalogue-hero-heading {
+  font-family: var(--font-brush);
+  font-size: clamp(3rem, 6.2vw, 4.8rem);
+  line-height: 1.05;
+  color: var(--text-primary);
+  margin-bottom: 1.25rem;
+  letter-spacing: -0.01em;
+}
+
+.catalogue-hero-heading .hero-highlight-word {
+  position: relative;
+  display: inline-block;
+  color: var(--accent-coral);
+}
+
+.catalogue-hero-subtext {
+  font-size: clamp(1.05rem, 1.8vw, 1.2rem);
+  color: var(--text-secondary);
+  line-height: 1.65;
+  max-width: 540px;
+  margin-bottom: 2.25rem;
+}
+
+.catalogue-hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.15rem;
+  flex-wrap: wrap;
+}
+
+/* Right Editorial Artwork Composition (Large artwork with layered mountings) */
+.catalogue-hero-composition {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 440px;
+}
+
+/* Layered craft mounting sheet behind main artwork */
+.hero-craft-underlay {
+  position: absolute;
+  inset: 15px -10px -15px 10px;
+  background: #EFE7DC;
+  border-radius: 16px;
+  transform: rotate(3deg);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  border: 1px dashed rgba(160, 140, 120, 0.4);
+  pointer-events: none;
+}
+
+/* Main Large Art Presentation Card */
+.hero-art-main-display {
+  background: #FFFFFF;
+  padding: 16px 16px 26px;
+  border-radius: 16px;
+  box-shadow: 
+    0 24px 50px -12px rgba(15, 32, 56, 0.18),
+    0 6px 16px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(15, 32, 56, 0.08);
+  width: min(100%, 390px);
+  transform: rotate(-2deg);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-art-main-display:hover {
+  transform: rotate(0deg) scale(1.02);
+  box-shadow: 0 30px 60px -12px rgba(15, 32, 56, 0.24);
+}
+
+.hero-art-main-image-wrap {
+  width: 100%;
+  aspect-ratio: 4/3;
+  overflow: hidden;
+  border-radius: 10px;
+  background: #F0ECE1;
+  position: relative;
+}
+
+.hero-art-main-image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.hero-art-caption-strip {
+  margin-top: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-family: var(--font-brush);
+  font-size: 1.3rem;
+  color: var(--text-primary);
+}
+
+.hero-art-caption-strip .art-medium-label {
+  font-size: 0.85rem;
+  font-family: var(--font-body);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+}
+
+/* Satellite pinned artwork layer */
+.hero-art-satellite-layer {
+  position: absolute;
+  top: -10px;
+  right: 15px;
+  background: #FFFFFF;
+  padding: 10px 10px 16px;
+  border-radius: 10px;
+  box-shadow: 0 14px 30px -6px rgba(15, 32, 56, 0.16);
+  border: 1px solid rgba(15, 32, 56, 0.08);
+  width: 160px;
+  transform: rotate(6deg);
+  z-index: 3;
+  transition: transform 0.4s ease;
+}
+
+.hero-art-satellite-layer:hover {
+  transform: rotate(2deg) scale(1.04);
+}
+
+.hero-art-satellite-layer img {
+  width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  border-radius: 6px;
+  display: block;
+}
+
+/* Handwritten studio note pinned at bottom */
+.hero-art-studio-note {
+  position: absolute;
+  bottom: 5px;
+  left: 10px;
+  background: #FFFBEB;
+  border: 1px solid rgba(255, 183, 3, 0.45);
+  padding: 0.75rem 1.15rem;
+  border-radius: 8px;
+  box-shadow: 0 8px 22px rgba(15, 32, 56, 0.08);
+  transform: rotate(-4deg);
+  z-index: 4;
+  max-width: 210px;
+}
+
+.hero-art-studio-note p {
+  font-family: var(--font-brush);
+  font-size: 1.15rem;
+  line-height: 1.3;
+  color: #78350F;
+  margin: 0;
+}
+
+/* ==========================================================================
+   2. CHAPTER 01 — DRAW • SHADE • SKETCH (Editorial Craft Board)
+   Courses: Drawing & Colouring, Pencil Shading, Colour Pencil Sketching, Oil Pastels, Doodle Art
+   ========================================================================== */
+.cb-chapter-section {
+  padding: clamp(3.5rem, 7vw, 6rem) 1.25rem;
+  position: relative;
+}
+
+.cb-chapter-drawing-bg {
+  background: linear-gradient(180deg, #FAF7F2 0%, #F4ECE1 50%, #EFE5D6 100%);
+  border-bottom: 2px dashed rgba(160, 140, 120, 0.3);
+}
+
+.cb-chapter-header {
+  max-width: 1140px;
+  margin: 0 auto 3rem;
+  display: flex;
+  align-items: baseline;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.cb-chapter-num {
+  font-family: var(--font-brush);
+  font-size: clamp(3.5rem, 7vw, 5.5rem);
+  line-height: 0.9;
+  color: #78350F;
+  opacity: 0.85;
+}
+
+.cb-chapter-title-group {
+  flex: 1;
+}
+
+.cb-chapter-tag {
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #A06D3B;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.cb-chapter-title {
+  font-family: var(--font-brush);
+  font-size: clamp(2.4rem, 5vw, 3.8rem);
+  color: #1A202C;
+  line-height: 1.1;
+  margin: 0;
+}
+
+/* Asymmetric 5-course Editorial Layout for Chapter 01 */
+.cb-draw-mosaic {
+  max-width: 1140px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.25fr 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 2rem;
+}
+
+/* Pinned Art Cards (Controlled Variation) */
+.cb-card {
+  background: #FFFFFF;
+  border-radius: 14px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 10px 24px -4px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
+  will-change: transform;
+}
+
+.cb-card:hover {
+  transform: translateY(-6px) rotate(0deg) !important;
+  box-shadow: 0 20px 38px -6px rgba(0, 0, 0, 0.16);
+  z-index: 10;
+}
+
+/* Course 1: Drawing & Colouring (Heroic Tall Placement) */
+.cb-card-drawing-colouring {
+  grid-row: span 2;
+  padding: 16px 16px 24px;
+}
+
+.cb-card-drawing-colouring .cb-card-img-wrap {
+  width: 100%;
+  aspect-ratio: 4/3;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 1.25rem;
+  background: #F0ECE1;
+}
+
+/* Compact Cards */
+.cb-card-compact {
+  padding: 14px 14px 20px;
+}
+
+.cb-card-compact .cb-card-img-wrap {
+  width: 100%;
+  aspect-ratio: 16/10;
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+  background: #F0ECE1;
+}
+
+.cb-card-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+  display: block;
+}
+
+.cb-card:hover .cb-card-img-wrap img {
+  transform: scale(1.04);
+}
+
+.cb-card-name {
+  font-family: var(--font-brush);
+  font-size: 1.7rem;
+  color: #1A202C;
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+}
+
+.cb-card-desc {
+  font-size: 0.92rem;
+  color: #4A5568;
+  line-height: 1.55;
+  margin-bottom: 1.35rem;
+  flex-grow: 1;
+}
+
+.cb-enquire-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  width: 100%;
+  height: 42px;
+  padding: 0 1.25rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: pointer;
+  border: 1.5px solid rgba(0, 0, 0, 0.12);
+  transition: all var(--transition-fast);
+  background: #FAF7F2;
+  color: #1A202C;
+}
+
+.cb-enquire-btn:hover {
+  background: var(--accent-coral);
+  color: #FFFFFF;
+  border-color: var(--accent-coral);
+  box-shadow: 0 4px 14px rgba(230, 57, 86, 0.3);
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   3. ARTISTIC TRANSITION 1
+   Pencil graphite line morphs into watercolour brush stroke
+   ========================================================================== */
+.cb-transition-one {
+  padding: 2.5rem 1.25rem;
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.transition-label-script {
+  font-family: var(--font-brush);
+  font-size: 1.25rem;
+  color: #718096;
+  margin-top: 0.5rem;
+}
+
+/* ==========================================================================
+   4. CHAPTER 02 — PAINT WITH COLOUR
+   Courses: Watercolour Painting, Acrylic Painting, Oil Pastels
+   Atmosphere: Fluid painterly paper, colour bleed washes
+   ========================================================================== */
+.cb-chapter-painting-bg {
+  background: 
+    radial-gradient(circle at 15% 30%, rgba(255, 183, 3, 0.16) 0%, transparent 45%),
+    radial-gradient(circle at 85% 70%, rgba(230, 57, 86, 0.14) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(0, 168, 150, 0.1) 0%, transparent 55%),
+    #FFFDF9;
+  position: relative;
+}
+
+.cb-painting-trio-grid {
+  max-width: 1140px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1.75rem, 3vw, 2.5rem);
+}
+
+/* 3 Distinct Medium Visual Treatments */
+.cb-paint-card {
+  background: #FFFFFF;
+  border-radius: 16px;
+  padding: 16px 16px 24px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 16px 36px -6px rgba(40, 20, 25, 0.1);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
+}
+
+.cb-paint-card:hover {
+  transform: translateY(-8px) rotate(0deg) !important;
+  box-shadow: 0 24px 45px -8px rgba(40, 20, 25, 0.18);
+  z-index: 10;
+}
+
+/* Watercolour: soft translucent bleed top border */
+.cb-paint-watercolour {
+  border: 1.5px solid rgba(255, 183, 3, 0.35);
+  box-shadow: 0 16px 36px -6px rgba(255, 183, 3, 0.15);
+}
+
+.cb-paint-watercolour::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: linear-gradient(90deg, #FFB703, #E63956);
+}
+
+/* Acrylic: bolder canvas texture feel */
+.cb-paint-acrylic {
+  border: 1.5px solid rgba(230, 57, 86, 0.3);
+  box-shadow: 0 16px 36px -6px rgba(230, 57, 86, 0.15);
+}
+
+.cb-paint-acrylic::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: linear-gradient(90deg, #E63956, #805AD5);
+}
+
+/* Oil Pastels: vibrant pigment edge */
+.cb-paint-pastels {
+  border: 1.5px solid rgba(0, 168, 150, 0.3);
+  box-shadow: 0 16px 36px -6px rgba(0, 168, 150, 0.15);
+}
+
+.cb-paint-pastels::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: linear-gradient(90deg, #00A896, #3182CE);
+}
+
+.cb-paint-img-wrap {
+  width: 100%;
+  aspect-ratio: 4/3;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 1.25rem;
+  background: #F0ECE1;
+}
+
+.cb-paint-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+  display: block;
+}
+
+.cb-paint-card:hover .cb-paint-img-wrap img {
+  transform: scale(1.04);
+}
+
+/* ==========================================================================
+   5. ARTISTIC TRANSITION 2
+   Watercolour wash bleeds into geometric decorative pattern
+   ========================================================================== */
+.cb-transition-two {
+  padding: 3rem 1.25rem;
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.transition-mandala-motif {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.mandala-center-star {
+  color: #00A896;
+}
+
+/* ==========================================================================
+   6. CHAPTER 03 — PATTERNS • CULTURE • IMAGINATION
+   Courses: Mandala Art, Madhubani Art
+   Atmosphere: Museum display + handmade art book, prominent artworks
+   ========================================================================== */
+.cb-chapter-traditional-bg {
+  background: 
+    radial-gradient(circle at 50% 50%, rgba(0, 168, 150, 0.08) 0%, transparent 60%),
+    linear-gradient(180deg, #FBF8F3 0%, #F5EFE4 100%);
+  position: relative;
+  border-top: 1px solid #E4D8C8;
+  border-bottom: 1px solid #E4D8C8;
+}
+
+.cb-traditional-gallery {
+  max-width: 1040px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2rem, 4vw, 3.5rem);
+}
+
+.cb-traditional-card {
+  background: #FFFDF9;
+  border-radius: 18px;
+  padding: clamp(1.75rem, 3.5vw, 2.5rem);
+  box-shadow: 
+    0 18px 40px -8px rgba(0, 120, 100, 0.12),
+    0 2px 8px rgba(0, 0, 0, 0.04);
+  border: 2px solid #DECFC0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
+}
+
+.cb-traditional-card:hover {
+  transform: translateY(-6px) rotate(0deg) !important;
+  box-shadow: 0 26px 48px -8px rgba(0, 120, 100, 0.18);
+  z-index: 10;
+}
+
+.cb-traditional-card::after {
+  content: '';
+  position: absolute;
+  inset: 6px;
+  border: 1px dashed rgba(160, 130, 90, 0.35);
+  border-radius: 12px;
+  pointer-events: none;
+}
+
+.cb-traditional-img-wrap {
+  width: 100%;
+  aspect-ratio: 4/3;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 1.25rem;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+.cb-traditional-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+  display: block;
+}
+
+.cb-traditional-card:hover .cb-traditional-img-wrap img {
+  transform: scale(1.04);
+}
+
+/* ==========================================================================
+   7. BIG ARTISTIC MOMENT
+   "There is no one way to make art."
+   ========================================================================== */
+.cb-artistic-moment-section {
+  padding: clamp(3.5rem, 6vw, 5rem) 1.25rem;
+  background: #FFFDF9;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.cb-moment-inner {
+  max-width: 840px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.cb-moment-quote {
+  font-family: var(--font-brush);
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  line-height: 1.15;
+  color: #1A202C;
+  letter-spacing: -0.01em;
+  margin-bottom: 1.25rem;
+}
+
+/* ==========================================================================
+   8. FINAL ENQUIRY
+   FOUND SOMETHING YOU'D LIKE TO TRY? -> ENQUIRE ABOUT A COURSE →
+   ========================================================================== */
+.cb-final-enquiry-section {
+  padding: clamp(2.75rem, 4.5vw, 3.5rem) 1.25rem;
+  background: #09192E;
+  color: #FFFFFF;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.cb-final-box {
+  max-width: 600px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.cb-final-heading {
+  font-family: var(--font-brush);
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  line-height: 1.16;
+  color: #FFFFFF;
+  margin-bottom: 1.25rem;
+  letter-spacing: 0.02em;
+}
+
+.cb-final-enquire-btn {
+  background: var(--accent-coral);
+  color: #FFFFFF;
+  padding: 0 2.5rem;
+  height: 56px;
+  border-radius: var(--radius-pill);
+  font-size: 1.05rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  border: 2px solid transparent;
+  box-shadow: 0 10px 28px rgba(230, 57, 86, 0.45);
+  transition: all var(--transition-fast);
+}
+
+.cb-final-enquire-btn:hover {
+  background: var(--accent-coral-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 14px 34px rgba(230, 57, 86, 0.55);
+}
+
+/* ==========================================================================
+   RESPONSIVENESS (360px, 390px, 430px, 768px, 1024px, 1280px, 1440px+)
+   ========================================================================= */
+@media (max-width: 1024px) {
+  .catalogue-hero-container {
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+  }
+
+  .cb-draw-mosaic {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .cb-card-drawing-colouring {
+    grid-row: auto;
+    grid-column: span 2;
+  }
+
+  .cb-painting-trio-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .cb-painting-trio-grid .cb-paint-card:last-child {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 820px) {
+  .catalogue-hero-composition {
+    min-height: 380px;
+  }
+
+  .cb-draw-mosaic {
+    grid-template-columns: 1fr;
+  }
+
+  .cb-card-drawing-colouring {
+    grid-column: auto;
+  }
+
+  .cb-painting-trio-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cb-painting-trio-grid .cb-paint-card:last-child {
+    grid-column: auto;
+  }
+
+  .cb-traditional-gallery {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-art-main-display {
+    width: 290px;
+    padding: 12px 12px 20px;
+  }
+
+  .hero-art-satellite-layer {
+    width: 130px;
+    right: 5px;
+    top: -15px;
+  }
+
+  .hero-art-studio-note {
+    bottom: -10px;
+    left: 5px;
+  }
+
+  .catalogue-hero-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .catalogue-hero-actions .btn {
+    width: 100%;
+  }
+
+  .cb-chapter-header {
+    margin-bottom: 2rem;
+  }
+
+  .cb-final-enquire-btn {
+    width: 100%;
+  }
+}
+
+/* Accessibility: prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .cb-card,
+  .cb-paint-card,
+  .cb-traditional-card,
+  .hero-art-main-display,
+  .hero-art-satellite-layer {
+    transform: none !important;
+    transition: none !important;
+  }
+}

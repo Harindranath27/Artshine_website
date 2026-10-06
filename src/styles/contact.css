@@ -1,0 +1,510 @@
+/* ==========================================================================
+   ARTSHINE CONTACT PAGE STYLES (contact.css)
+   Warm artistic stationery & editorial communication aesthetics
+   ========================================================================== */
+
+.contact-page-viewport {
+  background-color: var(--bg-page, #FAF8F2);
+  color: var(--text-primary, #0F2038);
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  font-family: var(--font-body, 'Plus Jakarta Sans', sans-serif);
+}
+
+/* Washi Tape Accent */
+.contact-washi-tape {
+  position: absolute;
+  height: 22px;
+  background: rgba(255, 238, 196, 0.95);
+  border-left: 2px dashed rgba(217, 119, 6, 0.45);
+  border-right: 2px dashed rgba(217, 119, 6, 0.45);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.07);
+  pointer-events: none;
+  z-index: 5;
+  backdrop-filter: blur(2px);
+}
+
+.tape-coral {
+  background: rgba(255, 222, 230, 0.95);
+  border-color: rgba(230, 57, 86, 0.45);
+}
+
+.tape-teal {
+  background: rgba(216, 245, 240, 0.95);
+  border-color: rgba(0, 168, 150, 0.45);
+}
+
+.tape-yellow {
+  background: rgba(255, 244, 206, 0.95);
+  border-color: rgba(255, 183, 3, 0.5);
+}
+
+/* ==========================================================================
+   1. HERO: SIMPLE ARTISTIC INTRO
+   ========================================================================== */
+.contact-intro-section {
+  position: relative;
+  padding: clamp(3rem, 5.5vw, 4.5rem) 0 clamp(2rem, 4vw, 3rem);
+  background: 
+    radial-gradient(circle at 85% 20%, rgba(255, 183, 3, 0.12) 0%, transparent 45%),
+    radial-gradient(circle at 10% 80%, rgba(230, 57, 86, 0.08) 0%, transparent 40%),
+    linear-gradient(180deg, #FAF8F2 0%, #FFFDF9 60%, #FAF8F2 100%);
+  border-bottom: 1px solid rgba(15, 32, 56, 0.06);
+  overflow: hidden;
+}
+
+.contact-intro-grid {
+  display: grid;
+  grid-template-columns: 1.25fr 0.75fr;
+  gap: clamp(2rem, 4vw, 3.5rem);
+  align-items: center;
+}
+
+.contact-intro-title {
+  font-family: var(--font-brush, 'Caveat', cursive);
+  font-size: clamp(2.75rem, 5.5vw, 4.25rem);
+  font-weight: 700;
+  color: var(--text-primary, #0F2038);
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+
+.contact-highlight-text {
+  position: relative;
+  display: inline-block;
+  color: var(--accent-coral, #E63956);
+}
+
+.contact-intro-desc {
+  font-size: clamp(1.05rem, 1.8vw, 1.2rem);
+  color: var(--text-secondary, #4A5568);
+  line-height: 1.65;
+  max-width: 520px;
+}
+
+/* Intro Visual Card with Artwork Fragment */
+.contact-intro-artwork-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.contact-intro-artwork-card {
+  position: relative;
+  background: #FFFFFF;
+  padding: 0.85rem;
+  border-radius: 16px;
+  box-shadow: 0 14px 32px -8px rgba(15, 32, 56, 0.12);
+  border: 1px solid rgba(15, 32, 56, 0.08);
+  transform: rotate(2deg);
+  transition: transform 0.3s ease;
+  max-width: 320px;
+  width: 100%;
+}
+
+.contact-intro-artwork-card:hover {
+  transform: rotate(0deg) translateY(-3px);
+}
+
+.contact-intro-img-frame {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  aspect-ratio: 4 / 3;
+}
+
+.contact-intro-img-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.contact-intro-art-caption {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 0.65rem;
+  font-size: 0.82rem;
+  color: var(--text-secondary, #4A5568);
+}
+
+.contact-intro-art-tag {
+  font-family: var(--font-brush, 'Caveat', cursive);
+  font-size: 1.15rem;
+  color: var(--accent-coral, #E63956);
+  font-weight: 700;
+}
+
+/* ==========================================================================
+   2. CONTACT METHODS (3 Exactly Equal Cards: WhatsApp, Phone, Email)
+   ========================================================================== */
+.contact-channels-section {
+  position: relative;
+  padding: clamp(2.5rem, 5vw, 3.5rem) 0;
+  background: #FAF8F2;
+}
+
+.contact-channels-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1.25rem, 2.5vw, 1.75rem);
+  align-items: stretch;
+}
+
+.contact-channel-card {
+  position: relative;
+  background: #FFFFFF;
+  border-radius: 18px;
+  padding: 1.75rem 1.5rem;
+  border: 1px solid rgba(15, 32, 56, 0.08);
+  box-shadow: 0 4px 16px rgba(15, 32, 56, 0.04);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%; /* Guarantees exactly equal height */
+  box-sizing: border-box;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  overflow: hidden;
+}
+
+.contact-channel-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 30px -8px rgba(15, 32, 56, 0.1);
+  border-color: rgba(15, 32, 56, 0.15);
+}
+
+.contact-channel-card.channel-whatsapp:hover {
+  border-color: rgba(0, 168, 150, 0.45);
+}
+
+.contact-channel-card.channel-phone:hover {
+  border-color: rgba(230, 57, 86, 0.45);
+}
+
+.contact-channel-card.channel-email:hover {
+  border-color: rgba(49, 130, 206, 0.45);
+}
+
+.channel-card-top {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.channel-icon-pill {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  transition: transform 0.2s ease;
+}
+
+.contact-channel-card:hover .channel-icon-pill {
+  transform: scale(1.08) rotate(3deg);
+}
+
+.icon-whatsapp {
+  background: #E0F5F2;
+  color: #00A896;
+}
+
+.icon-phone {
+  background: #FFECEF;
+  color: #E63956;
+}
+
+.icon-email {
+  background: #EBF8FF;
+  color: #3182CE;
+}
+
+.channel-tag-eyebrow {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted, #718096);
+  margin-bottom: 0.25rem;
+}
+
+.channel-title {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--text-primary, #0F2038);
+  margin-bottom: 0.4rem;
+}
+
+.channel-desc {
+  font-size: 0.88rem;
+  color: var(--text-secondary, #4A5568);
+  line-height: 1.55;
+  margin-bottom: 1.5rem;
+  flex: 1;
+}
+
+.channel-action-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  height: 44px;
+  border-radius: 12px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+.action-whatsapp {
+  background: #00A896;
+  color: #FFFFFF;
+}
+
+.action-whatsapp:hover {
+  background: #008f80;
+  color: #FFFFFF;
+}
+
+.action-phone {
+  background: #FFECEF;
+  color: #E63956;
+  border: 1px solid rgba(230, 57, 86, 0.25);
+}
+
+.action-phone:hover {
+  background: #E63956;
+  color: #FFFFFF;
+}
+
+.action-email {
+  background: #FAF8F2;
+  color: var(--text-primary, #0F2038);
+  border: 1.5px solid rgba(15, 32, 56, 0.15);
+}
+
+.action-email:hover {
+  background: #0F2038;
+  color: #FFFFFF;
+  border-color: #0F2038;
+}
+
+/* ==========================================================================
+   3. SIMPLE ENQUIRY FORM (Ivory stationery look, minimal fields)
+   ========================================================================== */
+.contact-form-section {
+  position: relative;
+  padding: clamp(2.5rem, 5vw, 4rem) 0 clamp(1.75rem, 3vw, 2.5rem);
+  background: #FAF8F2;
+}
+
+.contact-enquiry-sheet {
+  background: #FFFDF9;
+  border-radius: 24px;
+  padding: clamp(1.75rem, 4.5vw, 3rem);
+  border: 1px solid rgba(15, 32, 56, 0.09);
+  box-shadow: 
+    0 4px 6px -1px rgba(15, 32, 56, 0.03),
+    0 20px 40px -15px rgba(15, 32, 56, 0.08);
+  max-width: 680px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* Subtle rainbow stationery bar */
+.contact-enquiry-sheet::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, #E63956 0%, #FFB703 50%, #00A896 100%);
+  border-radius: 24px 24px 0 0;
+}
+
+.sheet-header-wrapper {
+  margin-bottom: 1.75rem;
+  text-align: left;
+}
+
+.sheet-eyebrow {
+  font-family: var(--font-brush, 'Caveat', cursive);
+  font-size: 1.3rem;
+  color: var(--accent-coral, #E63956);
+  font-weight: 700;
+  margin-bottom: 0.2rem;
+  display: block;
+}
+
+.sheet-title {
+  font-family: var(--font-brush, 'Caveat', cursive);
+  font-size: clamp(2.2rem, 3.8vw, 2.85rem);
+  font-weight: 700;
+  color: var(--text-primary, #0F2038);
+  line-height: 1.15;
+  margin-bottom: 0.4rem;
+}
+
+.sheet-subtitle {
+  font-size: 0.92rem;
+  color: var(--text-secondary, #4A5568);
+  line-height: 1.55;
+}
+
+.art-form-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+}
+
+.art-form-row-2col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.15rem;
+}
+
+.art-input-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text-primary, #0F2038);
+  margin-bottom: 0.4rem;
+}
+
+.art-input-label span.req {
+  color: var(--accent-coral, #E63956);
+}
+
+.art-text-input,
+.art-select-input {
+  width: 100%;
+  height: 48px;
+  border: 1.5px solid rgba(15, 32, 56, 0.14);
+  border-radius: 12px;
+  background: #FFFFFF;
+  padding: 0 1rem;
+  font-family: inherit;
+  font-size: 0.92rem;
+  color: var(--text-primary, #0F2038);
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+.art-text-input:focus,
+.art-select-input:focus {
+  outline: none;
+  border-color: var(--accent-coral, #E63956);
+  box-shadow: 0 0 0 3px rgba(230, 57, 86, 0.12);
+  background: #FFFFFF;
+}
+
+.art-submit-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  width: 100%;
+  height: 50px;
+  border-radius: 999px;
+  background: var(--accent-coral, #E63956);
+  color: #FFFFFF;
+  font-size: 0.98rem;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  transition: all 0.25s ease;
+  box-shadow: 0 8px 18px -4px rgba(230, 57, 86, 0.35);
+}
+
+.art-submit-btn:hover {
+  background: #D42B48;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 22px -4px rgba(230, 57, 86, 0.45);
+}
+
+.art-submit-btn:active {
+  transform: translateY(0);
+}
+
+/* Success Confirmation State */
+.enquiry-success-box {
+  text-align: center;
+  padding: 2.5rem 1rem;
+}
+
+.success-check-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #E0F5F2;
+  color: #00A896;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.25rem;
+}
+
+.success-title {
+  font-family: var(--font-brush, 'Caveat', cursive);
+  font-size: clamp(2.2rem, 4vw, 3rem);
+  color: var(--text-primary, #0F2038);
+  margin-bottom: 0.4rem;
+}
+
+.success-desc {
+  font-size: 0.95rem;
+  color: var(--text-secondary, #4A5568);
+  line-height: 1.6;
+  max-width: 440px;
+  margin: 0 auto 1.5rem;
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN & MOBILE OPTIMIZATIONS
+   ========================================================================== */
+@media (max-width: 960px) {
+  .contact-intro-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .contact-intro-desc {
+    margin: 0 auto;
+  }
+
+  .contact-intro-artwork-wrapper {
+    margin-top: 1rem;
+  }
+
+  .contact-channels-grid {
+    grid-template-columns: 1fr;
+    max-width: 420px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .art-form-row-2col {
+    grid-template-columns: 1fr;
+    gap: 1.15rem;
+  }
+
+  .contact-enquiry-sheet {
+    padding: 1.5rem 1.25rem;
+    border-radius: 18px;
+  }
+
+  .channel-action-btn {
+    height: 48px; /* Touch-friendly tap target */
+  }
+}

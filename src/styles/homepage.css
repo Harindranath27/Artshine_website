@@ -38,8 +38,11 @@
 }
 
 .brand-logo img {
-  height: 48px;
+  height: clamp(64px, 5.5vw, 72px);
   width: auto;
+  max-width: min(36vw, 160px);
+  display: block;
+  object-fit: contain;
 }
 
 .main-nav {
@@ -147,11 +150,12 @@
   margin-bottom: var(--space-2);
 }
 
-.mobile-drawer-header .mobile-drawer-title {
-  font-family: var(--font-brush);
-  font-size: 1.4rem;
-  color: var(--text-primary);
-  font-weight: 700;
+.mobile-drawer-logo {
+  height: 56px;
+  max-width: 128px;
+  width: auto;
+  display: block;
+  object-fit: contain;
 }
 
 .mobile-drawer-close {
@@ -1039,7 +1043,7 @@
 
 .footer-grid {
   display: grid;
-  grid-template-columns: 1.4fr 0.9fr 0.9fr 1fr;
+  grid-template-columns: 1.6fr 1fr 1fr;
   gap: clamp(2rem, 4vw, 4rem);
   margin-bottom: clamp(2.5rem, 4vw, 4rem);
 }
@@ -1197,57 +1201,522 @@
     width: 100%;
     height: 130px;
   }
-  .cta-stats-row {
-    grid-template-columns: 1fr;
-    gap: var(--space-4);
-  }
 }
 
-@media (max-width: 430px) {
-  .hero-title {
-    font-size: clamp(2.1rem, 11vw, 2.6rem);
-  }
-  .hero-cta-group {
-    flex-direction: column;
-    align-items: stretch;
-    width: 100%;
-  }
-  .hero-cta-group .btn {
-    width: 100%;
-  }
-  .hero-handwritten-note {
-    font-size: 1.15rem;
-    top: -16px;
-    right: -10px;
-  }
-  .hero-doodle-sun {
-    left: auto;
-    right: 20px;
-    top: -10px;
-    width: 32px;
-    height: 32px;
-  }
-  .cta-actions {
-    flex-direction: column;
-    align-items: stretch;
-    width: 100%;
-  }
-  .cta-actions .btn {
-    width: 100%;
-  }
-  .section-header-flex {
-    flex-direction: column;
-    align-items: flex-start;
-  }
+/* ==========================================================================
+   MULTI-PAGE ARCHITECTURE STYLES
+   ========================================================================== */
+
+/* Main layout wrapper */
+.artshine-app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
-@media (max-width: 360px) {
-  .hero-feature-pills {
+.main-content {
+  flex: 1;
+}
+
+/* --------------------------------------------------------------------------
+   HOME: COMPACT ABOUT & WHAT WE DO ART BOARD CARDS
+   -------------------------------------------------------------------------- */
+.about-compact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  align-items: center;
+  gap: clamp(2.5rem, 5vw, 5rem);
+}
+
+.what-we-do-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1.25rem, 2.5vw, 2rem);
+}
+
+@media (max-width: 900px) {
+  .what-we-do-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .about-compact-grid {
     grid-template-columns: 1fr;
   }
-  .concept-top-bar {
-    font-size: 0.72rem;
-    padding: 0.4rem 0.5rem;
+}
+
+@media (max-width: 580px) {
+  .what-we-do-grid {
+    grid-template-columns: 1fr;
   }
 }
 
+/* --------------------------------------------------------------------------
+   HOME: ACHIEVEMENTS HORIZONTAL TIMELINE
+   -------------------------------------------------------------------------- */
+.achievements-horizontal-wrap {
+  width: 100%;
+  overflow-x: auto;
+  padding-bottom: 1.5rem;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(15, 32, 56, 0.2) transparent;
+}
+
+.achievements-horizontal-wrap::-webkit-scrollbar {
+  height: 6px;
+}
+
+.achievements-horizontal-wrap::-webkit-scrollbar-thumb {
+  background: rgba(15, 32, 56, 0.2);
+  border-radius: 999px;
+}
+
+.achievements-scroll-track {
+  display: flex;
+  gap: 1.75rem;
+  min-width: max-content;
+}
+
+.achievement-timeline-card {
+  width: 300px;
+  background: var(--bg-page);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(15, 32, 56, 0.08);
+  overflow: hidden;
+  box-shadow: var(--shadow-subtle);
+  display: flex;
+  flex-direction: column;
+}
+
+.achievement-card-img-wrap {
+  width: 100%;
+  height: 190px;
+  position: relative;
+  overflow: hidden;
+}
+
+.achievement-card-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.achievement-tag-pill {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(4px);
+  padding: 0.2rem 0.65rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.achievement-card-body {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.achievement-meta-year {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--accent-coral);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.achievement-title {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.achievement-event {
+  font-size: 0.84rem;
+  color: var(--text-secondary);
+}
+
+/* --------------------------------------------------------------------------
+   HOME: FEEDBACK & LEARNING MODES
+   -------------------------------------------------------------------------- */
+.feedback-cards-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.feedback-showcase-card {
+  background: #FFFFFF;
+  border-radius: var(--radius-xl);
+  padding: clamp(1.75rem, 3.5vw, 2.5rem);
+  box-shadow: var(--shadow-subtle);
+  border: 1.5px dashed rgba(15, 32, 56, 0.14);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.feedback-quote-mark {
+  font-size: 3rem;
+  color: var(--accent-yellow);
+  line-height: 0.8;
+  margin-bottom: 0.5rem;
+}
+
+.feedback-text {
+  font-size: 0.98rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+  font-style: italic;
+  margin-bottom: 1.5rem;
+}
+
+.feedback-author-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  border-top: 1px solid rgba(15, 32, 56, 0.08);
+  padding-top: 1rem;
+}
+
+.feedback-avatar-symbol {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--accent-coral-subtle);
+  color: var(--accent-coral);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
+
+.modes-dual-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.mode-panel {
+  background: #FFFFFF;
+  border-radius: var(--radius-xl);
+  padding: clamp(2rem, 4vw, 3rem);
+  border: 1px solid rgba(15, 32, 56, 0.08);
+  box-shadow: var(--shadow-subtle);
+}
+
+.mode-panel.offline-mode {
+  border-top: 6px solid var(--accent-coral);
+}
+
+.mode-panel.online-mode {
+  border-top: 6px solid var(--accent-teal);
+}
+
+.mode-tag-pill {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-pill);
+  margin-bottom: 1rem;
+}
+
+.mode-tag-pill.offline {
+  background: var(--accent-coral-subtle);
+  color: var(--accent-coral);
+}
+
+.mode-tag-pill.online {
+  background: var(--accent-teal-light);
+  color: var(--accent-teal);
+}
+
+.mode-panel-title {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+}
+
+.mode-panel-desc {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 1.75rem;
+}
+
+.cta-feature-pill {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 1rem 1.25rem;
+  border-radius: var(--radius-md);
+  color: #FFF;
+  font-size: 0.92rem;
+  backdrop-filter: blur(4px);
+}
+
+@media (max-width: 768px) {
+  .feedback-cards-grid,
+  .modes-dual-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   COURSES CATALOGUE PAGE
+   -------------------------------------------------------------------------- */
+.courses-catalogue-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+@media (max-width: 960px) {
+  .courses-catalogue-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .courses-catalogue-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   STUDENTS / YOUNG ARTISTS MASONRY GALLERY
+   -------------------------------------------------------------------------- */
+.students-filter-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+.gallery-filter-pill {
+  background: #FFFFFF;
+  border: 1.5px solid rgba(15, 32, 56, 0.12);
+  padding: 0.5rem 1.15rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.gallery-filter-pill:hover,
+.gallery-filter-pill.active {
+  background: var(--text-primary);
+  color: #FFFFFF;
+  border-color: var(--text-primary);
+}
+
+.students-masonry-grid {
+  columns: 3 280px;
+  column-gap: 1.75rem;
+}
+
+.gallery-masonry-card {
+  break-inside: avoid;
+  background: #FFFFFF;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  margin-bottom: 1.75rem;
+  border: 1px solid rgba(15, 32, 56, 0.08);
+  box-shadow: var(--shadow-subtle);
+  cursor: pointer;
+  transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
+}
+
+.gallery-masonry-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+}
+
+.gallery-masonry-img-wrap {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  background: #F0ECE1;
+}
+
+.gallery-masonry-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.gallery-masonry-card:hover .gallery-masonry-img-wrap img {
+  transform: scale(1.05);
+}
+
+.gallery-masonry-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 32, 56, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+}
+
+.gallery-masonry-card:hover .gallery-masonry-overlay {
+  opacity: 1;
+}
+
+.gallery-masonry-meta {
+  padding: 1rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.gallery-masonry-tag {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--accent-coral);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.gallery-masonry-title {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+/* --------------------------------------------------------------------------
+   CONTACT PAGE
+   -------------------------------------------------------------------------- */
+.contact-split-grid {
+  display: grid;
+  grid-template-columns: 1.25fr 0.95fr;
+  gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: flex-start;
+}
+
+@media (max-width: 900px) {
+  .contact-split-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 520px) {
+  .contact-name-phone-grid,
+  .contact-course-mode-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   STUDENT WORK CANVAS PREVIEW (SECTION 06)
+   Scrapbook polaroid artistic composition
+   -------------------------------------------------------------------------- */
+.student-canvas-composition {
+  position: relative;
+  padding: 1.5rem 0 2.5rem;
+}
+
+.canvas-artwork-cluster {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(1.25rem, 2.5vw, 2.25rem);
+  align-items: center;
+}
+
+@media (max-width: 960px) {
+  .canvas-artwork-cluster {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 540px) {
+  .canvas-artwork-cluster {
+    grid-template-columns: 1fr;
+    max-width: 340px;
+    margin: 0 auto;
+  }
+}
+
+.polaroid-artwork-item {
+  background: #FFFFFF;
+  padding: 0.85rem 0.85rem 1.35rem;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 10px 25px rgba(15, 32, 56, 0.08);
+  border: 1px solid rgba(15, 32, 56, 0.06);
+  position: relative;
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
+  cursor: pointer;
+}
+
+.polaroid-artwork-item:hover {
+  box-shadow: 0 16px 36px rgba(15, 32, 56, 0.14);
+}
+
+.polaroid-tape-mark {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 55px;
+  height: 18px;
+  background: rgba(255, 235, 179, 0.75);
+  border: 1px dashed rgba(217, 119, 6, 0.25);
+  backdrop-filter: blur(2px);
+  z-index: 5;
+}
+
+.polaroid-photo-frame {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 4px;
+  background: #EAE6DB;
+}
+
+.polaroid-photo-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.polaroid-caption {
+  margin-top: 0.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.polaroid-title {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.polaroid-medium {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+/* Accessibility: prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

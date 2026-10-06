@@ -1,0 +1,283 @@
+/* ==========================================================================
+   ARTSHINE FOOTER — VISUAL FLOW INTEGRATION
+   Deep navy canvas that flows from the page above it.
+   Uses the same warm ivory → deep navy journey the page establishes.
+   No abrupt blocks. No template appearance.
+   ========================================================================== */
+
+/* ==========================================================================
+   TRANSITION WAVE — bridges the page above into the footer below
+   This SVG wave is embedded in the Footer component via .footer-wave-bridge
+   ========================================================================== */
+.footer-wave-bridge {
+  display: block;
+  width: 100%;
+  /* Pulls the wave flush against the footer top — no gap */
+  margin-bottom: -2px;
+  line-height: 0;
+  overflow: hidden;
+}
+
+.footer-wave-bridge svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* ==========================================================================
+   SITE FOOTER BODY
+   ========================================================================== */
+.site-footer {
+  background: #07172C;
+  color: rgba(255, 255, 255, 0.82);
+  position: relative;
+  overflow: hidden;
+  padding-top: clamp(2.25rem, 3.5vw, 3rem);
+  padding-bottom: 2rem;
+  /* No border-top — the wave handles the transition */
+  border-top: none;
+  font-family: var(--font-body, 'Plus Jakarta Sans', sans-serif);
+}
+
+/* Subtle paper grain texture overlay — keeps the sketchbook feeling */
+.site-footer::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.025;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.9) 1px, transparent 0);
+  background-size: 22px 22px;
+  z-index: 0;
+}
+
+/* Ambient soft glow blobs — the same organic blur language used on all pages */
+.site-footer::after {
+  content: '';
+  position: absolute;
+  top: -60px;
+  right: 8%;
+  width: 360px;
+  height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 183, 3, 0.06) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Coral accent ambient glow (bottom-left) */
+.footer-ambient-coral {
+  position: absolute;
+  bottom: -40px;
+  left: 6%;
+  width: 220px;
+  height: 200px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(230, 57, 86, 0.035) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Ensure footer content stacks above the pseudo-element texture */
+.footer-container {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: var(--container-max, 1200px);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: clamp(1rem, 4vw, 2.5rem);
+  padding-right: clamp(1rem, 4vw, 2.5rem);
+}
+
+/* ==========================================================================
+   3-COLUMN GRID
+   ========================================================================== */
+.footer-grid-3col {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: clamp(2rem, 4vw, 4rem);
+  margin-bottom: clamp(2rem, 3.5vw, 3rem);
+  align-items: flex-start;
+}
+
+/* ==========================================================================
+   COLUMN 1: BRAND
+   ========================================================================== */
+.footer-brand-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.footer-logo-link {
+  display: inline-block;
+  margin-bottom: 0.85rem;
+  padding: 0.3rem 0.4rem;
+  border-radius: 6px;
+  background: #FAF8F2;
+  transition: opacity 0.2s ease;
+}
+
+.footer-logo-link:hover {
+  opacity: 0.88;
+}
+
+.footer-logo-img {
+  width: auto;
+  height: clamp(68px, 6vw, 76px);
+  max-width: min(100%, 128px);
+  object-fit: contain;
+  display: block;
+}
+
+/* "Learn. Create. Sparkle." in the brand brush font */
+.footer-brand-tagline {
+  font-family: var(--font-brush, 'Caveat', cursive);
+  font-size: 1.45rem;
+  color: #FFB703;
+  margin-bottom: 0.65rem;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+}
+
+/* Short descriptor — soft, not marketing */
+.footer-brand-short {
+  font-size: 0.88rem;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.55);
+  max-width: 300px;
+}
+
+/* Small decorative washi tape accent beneath brand tagline */
+.footer-brand-tape {
+  display: block;
+  width: 55px;
+  height: 14px;
+  background: rgba(255, 183, 3, 0.28);
+  border-left: 2px dashed rgba(255, 183, 3, 0.5);
+  border-right: 2px dashed rgba(255, 183, 3, 0.5);
+  margin-top: 0.25rem;
+  margin-bottom: 0.85rem;
+  transform: rotate(-0.8deg);
+  border-radius: 1px;
+}
+
+/* ==========================================================================
+   COLUMN HEADINGS (Pages / Connect)
+   ========================================================================== */
+.footer-col-title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.92);
+  text-transform: uppercase;
+  letter-spacing: 0.13em;
+  margin-bottom: 1.15rem;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+/* Decorative dot in brand accent colour */
+.footer-col-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #E63956;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.footer-col-dot.dot-teal {
+  background: #00A896;
+}
+
+/* ==========================================================================
+   NAV LINKS (Pages + Connect)
+   ========================================================================== */
+.footer-nav-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-nav-item a {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.62);
+  transition: all 0.22s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  text-decoration: none;
+}
+
+.footer-nav-item a:hover {
+  color: #FFFFFF;
+  transform: translateX(3px);
+}
+
+/* Arrow icon that appears on hover for external links */
+.footer-nav-item a:hover .footer-link-arrow {
+  opacity: 1;
+  transform: translateX(2px) translateY(-1px);
+}
+
+.footer-link-arrow {
+  opacity: 0;
+  transition: all 0.22s ease;
+  color: #FFB703;
+  flex-shrink: 0;
+}
+
+/* ==========================================================================
+   BOTTOM BAR
+   ========================================================================== */
+.footer-bottom-bar {
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.38);
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.footer-bottom-left {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.footer-sparkle-icon {
+  color: #FFB703;
+  opacity: 0.7;
+  flex-shrink: 0;
+}
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+@media (max-width: 900px) {
+  .footer-grid-3col {
+    grid-template-columns: 1.4fr 1fr 1fr;
+    gap: 1.75rem;
+  }
+}
+
+@media (max-width: 680px) {
+  .footer-grid-3col {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .footer-bottom-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.4rem;
+  }
+}
