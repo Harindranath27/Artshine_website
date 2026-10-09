@@ -2,11 +2,10 @@
    ARTSHINE STUDENT GALLERY & MEMORY WALL
    A physical scrapbook / exhibition wall:
    - Section 1: Editorial Introduction ("Students & Achievements", small hand-drawn elements)
-   - Section 2: Student Moments (Editorial Photo-Wall, overlapping, tape/pins, annotations)
-   - Section 3: Student Artwork (Exhibition approach: large featured artwork + supporting pieces + accessible lightbox)
-   - Section 4: Achievements / Exhibitions ("Wall of Milestones", editorial archival typography, verified events)
-   - Section 5: Memories / Events (Automatic Continuous Infinite Marquee / Film-strip Reel)
-   - Section 6: Final CTA ("More stories are still being created." -> Enquire Now)
+   - Section 2: Creative Moments
+   - Section 3: Art Exhibition & Milestones
+   - Section 4: Artshine Memories (continuous gallery)
+   - Section 5: Final CTA
    ========================================================================== */
 
 .students-memory-wall {
@@ -240,6 +239,7 @@
 
 .smw-photo-img-box {
   width: 100%;
+  aspect-ratio: 4 / 3;
   overflow: hidden;
   border-radius: 8px;
   background: #F0ECE1;
@@ -248,7 +248,7 @@
 .smw-photo-img-box img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   display: block;
   transition: transform 0.5s ease;
 }
@@ -274,144 +274,125 @@
 .wall-pos-6 { grid-column: span 6; }
 .wall-pos-7 { grid-column: span 6; }
 
-/* ==========================================================================
-   SECTION 3 — STUDENT ARTWORK (Exhibition Wall)
-   One large featured artwork + several smaller supporting artworks
-   ========================================================================== */
-.smw-artwork-section {
-  padding: clamp(4rem, 7vw, 6.5rem) 1.25rem;
-  background: 
-    radial-gradient(circle at 85% 20%, rgba(255, 183, 3, 0.12) 0%, transparent 45%),
-    radial-gradient(circle at 15% 80%, rgba(230, 57, 86, 0.08) 0%, transparent 40%),
-    #FFFDF9;
-  position: relative;
-  border-top: 1px solid rgba(15, 32, 56, 0.06);
-  border-bottom: 1px solid rgba(15, 32, 56, 0.06);
+.smw-milestones-evidence {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: stretch;
 }
 
-.smw-artwork-exhibition-layout {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1.15fr 1fr;
-  gap: clamp(2rem, 4vw, 3.5rem);
-  align-items: center;
-}
-
-/* Large Featured Artwork */
-.smw-featured-artwork-card {
-  background: #FFFFFF;
-  padding: clamp(1.25rem, 2.5vw, 1.75rem);
-  border-radius: 18px;
-  box-shadow: 0 20px 48px -10px rgba(15, 32, 56, 0.16);
-  border: 1.5px solid rgba(15, 32, 56, 0.08);
-  position: relative;
-  cursor: pointer;
-  transition: transform 0.35s ease, box-shadow 0.35s ease;
-}
-
-.smw-featured-artwork-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 28px 58px -12px rgba(15, 32, 56, 0.22);
-}
-
-.smw-featured-img-wrap {
-  width: 100%;
-  aspect-ratio: 4/3;
-  border-radius: 10px;
-  overflow: hidden;
-  background: #F0ECE1;
-  position: relative;
-  margin-bottom: 1.25rem;
-}
-
-.smw-featured-img-wrap img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.5s ease;
-}
-
-.smw-featured-artwork-card:hover .smw-featured-img-wrap img {
-  transform: scale(1.03);
-}
-
-.smw-featured-meta {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-.smw-featured-title {
-  font-family: var(--font-brush);
-  font-size: 1.85rem;
-  color: var(--text-primary);
+.smw-milestone-evidence {
   margin: 0;
-  line-height: 1.2;
-}
-
-.smw-archival-tag {
-  font-size: 0.78rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  padding: 0.3rem 0.75rem;
-  border-radius: var(--radius-pill);
-  background: #FAF6EF;
-  color: var(--accent-coral);
-  border: 1px solid rgba(230, 57, 86, 0.2);
-}
-
-/* Supporting Artworks Grid */
-.smw-supporting-artworks-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: clamp(1.25rem, 2vw, 1.75rem);
-}
-
-.smw-supporting-art-card {
+  padding: 14px 14px 18px;
   background: #FFFFFF;
-  padding: 10px 10px 16px;
-  border-radius: 12px;
-  box-shadow: 0 10px 24px -4px rgba(15, 32, 56, 0.09);
   border: 1px solid rgba(15, 32, 56, 0.08);
+  border-radius: 12px;
+  box-shadow: 0 12px 28px -6px rgba(15, 32, 56, 0.1);
   position: relative;
-  cursor: pointer;
-  transition: transform 0.35s ease, box-shadow 0.35s ease;
-}
-
-.smw-supporting-art-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 18px 36px -6px rgba(15, 32, 56, 0.16);
-}
-
-.smw-supporting-img-wrap {
-  width: 100%;
-  aspect-ratio: 4/3;
-  border-radius: 8px;
   overflow: hidden;
-  background: #F0ECE1;
-  position: relative;
-  margin-bottom: 8px;
 }
 
-.smw-supporting-img-wrap img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.smw-milestone-trigger {
   display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  text-align: left;
 }
 
-.smw-supporting-caption {
+.smw-milestone-trigger:focus-visible {
+  outline: 2px solid var(--accent-coral);
+  outline-offset: 3px;
+}
+
+.smw-milestone-evidence .smw-milestone-img-wrap {
+  aspect-ratio: 4 / 3;
+}
+
+.smw-milestone-evidence .smw-milestone-img-wrap img {
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.smw-milestone-evidence figcaption {
+  padding-top: 0.25rem;
   font-family: var(--font-brush);
-  font-size: 1.15rem;
+  font-size: 1.3rem;
   color: var(--text-primary);
+}
+
+.smw-milestone-details {
+  position: absolute;
+  right: 22px;
+  bottom: 58px;
+  left: 22px;
+  max-height: 68%;
+  overflow: auto;
   display: flex;
+  align-items: flex-start;
   justify-content: space-between;
-  align-items: baseline;
+  gap: 0.75rem;
+  padding: 0.8rem 0.9rem;
+  border-radius: 8px;
+  background: rgba(9, 25, 46, 0.94);
+  color: #FFFFFF;
+  font-size: 0.78rem;
+  line-height: 1.4;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(7px);
+  transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s ease;
+  z-index: 2;
+}
+
+.smw-milestone-details strong {
+  display: block;
+  margin-bottom: 0.3rem;
+  font-size: 0.86rem;
+  line-height: 1.35;
+}
+
+.smw-milestone-details p {
+  margin: 0.25rem 0 0;
+  overflow-wrap: anywhere;
+}
+
+.smw-milestone-close {
+  flex: 0 0 auto;
+  padding: 0.15rem 0;
+  border: 0;
+  background: transparent;
+  color: #FFFFFF;
+  font: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+}
+
+.smw-milestone-close:focus-visible {
+  outline: 2px solid #FFFFFF;
+  outline-offset: 3px;
+}
+
+.smw-milestone-evidence:focus-within .smw-milestone-details,
+.smw-milestone-evidence.is-selected .smw-milestone-details {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .smw-milestone-evidence:hover .smw-milestone-trigger img {
+    transform: scale(1.035);
+  }
+
+  .smw-milestone-evidence:hover .smw-milestone-details {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
 }
 
 /* ==========================================================================
@@ -571,13 +552,13 @@
   border-radius: 8px;
   overflow: hidden;
   background: #F0ECE1;
-  margin-bottom: 10px;
+  margin-bottom: 0;
 }
 
 .smw-marquee-img-box img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   display: block;
 }
 
@@ -660,12 +641,12 @@
     gap: 3rem;
   }
 
-  .smw-artwork-exhibition-layout {
+  .smw-milestones-wall {
     grid-template-columns: 1fr;
   }
 
-  .smw-milestones-wall {
-    grid-template-columns: 1fr;
+  .smw-milestones-evidence {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
@@ -689,13 +670,8 @@
     right: 5px;
   }
 
-  .smw-supporting-artworks-grid {
+  .smw-milestones-evidence {
     grid-template-columns: 1fr;
-  }
-
-  .smw-milestone-item {
-    flex-direction: column;
-    text-align: center;
   }
 
   .smw-final-cta-btn {
@@ -706,9 +682,10 @@
 /* Reduced motion preference */
 @media (prefers-reduced-motion: reduce) {
   .smw-photo-frame,
-  .smw-featured-artwork-card,
-  .smw-supporting-art-card,
-  .smw-marquee-card {
+  .smw-milestone-evidence,
+  .smw-marquee-card,
+  .smw-milestone-evidence .smw-milestone-img-wrap img,
+  .smw-milestone-details {
     transform: none !important;
     transition: none !important;
   }

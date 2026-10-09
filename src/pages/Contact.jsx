@@ -11,6 +11,7 @@ import SectionReveal from '../components/common/SectionReveal';
 import PaintStroke from '../components/common/PaintStroke';
 import ArtDoodle from '../components/common/ArtDoodle';
 import OrganicBlob from '../components/common/OrganicBlob';
+import { ARTSHINE_CONTACT } from '../config/artshineContact';
 import '../styles/contact.css';
 
 /**
@@ -134,7 +135,7 @@ export const Contact = () => {
                   </p>
                 </div>
                 <a
-                  href="https://wa.me/"
+                  href={ARTSHINE_CONTACT.whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="channel-action-btn action-whatsapp"
@@ -154,11 +155,11 @@ export const Contact = () => {
                   <div className="channel-tag-eyebrow">Direct Voice</div>
                   <h2 className="channel-title">Phone Call</h2>
                   <p className="channel-desc">
-                    For speaking directly about classes and admissions.
+                    +91 755 007 8993
                   </p>
                 </div>
                 <a
-                  href="tel:"
+                  href={`tel:${ARTSHINE_CONTACT.whatsappNumber.replace(/[^+\d]/g, '')}`}
                   className="channel-action-btn action-phone"
                   aria-label="Call Artshine directly"
                 >
@@ -179,13 +180,19 @@ export const Contact = () => {
                     For detailed questions and enquiries.
                   </p>
                 </div>
-                <a
-                  href="mailto:hello@artshine.in"
-                  className="channel-action-btn action-email"
-                  aria-label="Email Artshine"
-                >
-                  <Mail size={15} /> hello@artshine.in
-                </a>
+                {ARTSHINE_CONTACT.email ? (
+                    <a
+                      href={`mailto:${ARTSHINE_CONTACT.email}`}
+                      className="channel-action-btn action-email"
+                      aria-label="Email Artshine"
+                    >
+                      <Mail size={15} /> {ARTSHINE_CONTACT.email}
+                    </a>
+                  ) : (
+                    <span className="channel-action-btn action-email" aria-label="Email enquiries coming soon">
+                      <Mail size={15} /> Email enquiries coming soon
+                    </span>
+                )}
               </div>
             </div>
           </SectionReveal>

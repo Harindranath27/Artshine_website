@@ -12,6 +12,13 @@ import OrganicBlob from '../components/common/OrganicBlob';
 import BrushDivider from '../components/common/BrushDivider';
 import SectionReveal from '../components/common/SectionReveal';
 
+const parentTestimonials = [
+  'My daughter feels comfortable attending your art class. Her creativity has improved, especially her colour blending and colour combinations. Thank you for your guidance and support.',
+  "The class is very engaging and creative. My daughter enjoys it and looks forward to attending. It's nice to see improvement in her drawing and colouring skills.",
+  "After joining your art classes, my daughter's creativity has improved. She has started thinking outside the box and trying different artworks at home.",
+  'Kids love to come to your classes and never want to take leave. Apart from art, the activities you engage them in are really good.',
+];
+
 /**
  * ARTSHINE CREATIVE LEARNING — HOMEPAGE
  * 
@@ -122,7 +129,7 @@ export const Home = ({ onOpenEnquire }) => {
 
                 <div className="studio-hero-art-img-wrap">
                   <img
-                    src="/images/hero_art_world.jpg"
+                    src="/images/home/IMG1.jpeg"
                     alt="Artshine creative art space with paints, brushes, and colorful artwork"
                     width="720"
                     height="540"
@@ -134,7 +141,6 @@ export const Home = ({ onOpenEnquire }) => {
                   <span className="hand-annotation">
                     Welcome to Artshine <Heart size={13} color="#E63956" fill="#E63956" style={{ display: 'inline', verticalAlign: 'middle' }} />
                   </span>
-                  <span className="studio-hero-art-note">Artshine Classes</span>
                 </div>
               </motion.div>
             </div>
@@ -160,15 +166,12 @@ export const Home = ({ onOpenEnquire }) => {
               <div className="studio-tape studio-tape-coral" style={{ top: '-10px', left: '30%', width: '60px' }} />
               <div className="studio-about-photo-inner">
                 <img
-                  src="/images/course_junior_girl_drawing.jpg"
+                  src="/images/home/IMG2.jpeg"
                   alt="Student focused on observational drawing at Artshine"
                   loading="lazy"
                 />
               </div>
             </div>
-            <span className="hand-annotation" style={{ position: 'absolute', bottom: '-18px', right: '5px', background: '#FFFFFF', padding: '0.35rem 0.85rem', borderRadius: '6px', border: '1px dashed rgba(230, 57, 86, 0.35)', boxShadow: '0 4px 14px rgba(15, 32, 56, 0.06)' }}>
-              Patience & Observation
-            </span>
           </SectionReveal>
 
           {/* Short, Human About Text */}
@@ -230,7 +233,7 @@ export const Home = ({ onOpenEnquire }) => {
                 
                 <div className="studio-mode-img-wrap">
                   <img
-                    src="/images/course_online_art_girl.jpg"
+                    src="/images/home/IMG4.jpg"
                     alt="Student participating in online art session from home"
                     loading="lazy"
                   />
@@ -256,7 +259,7 @@ export const Home = ({ onOpenEnquire }) => {
 
                 <div className="studio-mode-img-wrap">
                   <img
-                    src="/images/course_teen_easel_art.jpg"
+                    src="/images/home/IMG3.jpeg"
                     alt="Student learning at the easel with hands-on practice"
                     loading="lazy"
                   />
@@ -311,17 +314,10 @@ export const Home = ({ onOpenEnquire }) => {
                 <div className="studio-tape studio-tape-coral" style={{ top: '-10px', left: '15%', width: '60px' }} />
                 <div className="studio-wall-anchor-img">
                   <img
-                    src="/images/student_art_collection.jpg"
+                    src="/images/home/IMG8.jpeg"
                     alt="Student artwork showcase exhibition wall"
                     loading="lazy"
                   />
-                </div>
-                <div className="studio-wall-anchor-meta">
-                  <div>
-                    <h3 style={{ fontSize: '1.2rem', fontWeight: 800, color: 'var(--text-primary)' }}>Student Artwork Exhibition</h3>
-                    <p style={{ fontSize: '0.84rem', color: 'var(--text-secondary)' }}>Showcase wall of original student works</p>
-                  </div>
-                  <span className="hand-annotation">Exhibition Showcase</span>
                 </div>
               </div>
             </SectionReveal>
@@ -334,9 +330,8 @@ export const Home = ({ onOpenEnquire }) => {
                   <div className="studio-wall-small-item" style={{ transform: 'rotate(1.8deg)' }}>
                     <div className="studio-tape" style={{ top: '-10px', left: '20%', width: '45px' }} />
                     <div className="studio-wall-small-img">
-                      <img src="/images/art_sketch_portrait.jpg" alt="Pencil observation sketch" loading="lazy" />
-                    </div>
-                    <p className="studio-wall-small-caption">Pencil Study</p>
+                    <img src="/images/home/IMG5.png" alt="Students holding certificates" loading="lazy" />
+                  </div>
                   </div>
                 </SectionReveal>
 
@@ -345,9 +340,8 @@ export const Home = ({ onOpenEnquire }) => {
                   <div className="studio-wall-small-item" style={{ transform: 'rotate(-2deg)' }}>
                     <div className="studio-tape studio-tape-teal" style={{ top: '-10px', right: '20%', width: '45px' }} />
                     <div className="studio-wall-small-img">
-                      <img src="/images/art_mountain_landscape.jpg" alt="Gouache landscape study" loading="lazy" />
-                    </div>
-                    <p className="studio-wall-small-caption">Gouache Wash</p>
+                    <img src="/images/home/IMG6.jpeg" alt="Student wearing a medal and holding a certificate" loading="lazy" />
+                  </div>
                   </div>
                 </SectionReveal>
               </div>
@@ -357,19 +351,43 @@ export const Home = ({ onOpenEnquire }) => {
                 <div className="studio-wall-rotated-item" style={{ transform: 'rotate(1.5deg)' }}>
                   <div className="studio-tape studio-tape-coral" style={{ top: '-10px', right: '15%', width: '55px' }} />
                   <div className="studio-wall-rotated-img">
-                    <img src="/images/art_folk_bird.jpg" alt="Traditional Indian folk art study" loading="lazy" />
-                  </div>
-                  <div className="studio-wall-rotated-meta">
-                    <div>
-                      <h4 style={{ fontSize: '1.05rem', fontWeight: 800, color: 'var(--text-primary)' }}>Indian Folk Art Study</h4>
-                      <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Traditional motifs & decorative symmetry</p>
-                    </div>
-                    <span className="hand-annotation" style={{ fontSize: '1rem' }}>Cultural Study</span>
+                    <img src="/images/home/IMG7.jpeg" alt="Certificate presentation" loading="lazy" />
                   </div>
                 </div>
               </SectionReveal>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Parent feedback */}
+      <section className="studio-parent-feedback" aria-labelledby="parent-feedback-title">
+        <div className="container">
+          <SectionReveal>
+            <div className="studio-parent-feedback-card">
+              <span className="studio-parent-feedback-mark" aria-hidden="true">“</span>
+              <h2 id="parent-feedback-title" className="section-title">
+                Parent Feedback<span className="coral-accent">.</span>
+              </h2>
+              <p className="studio-parent-feedback-intro">
+                What parents say about their experience with Artshine.
+              </p>
+              <div className="studio-parent-feedback-window" role="region" aria-label="Parent testimonials">
+                <div className="studio-parent-feedback-track">
+                  {[false, true].map((isDuplicate) => (
+                    <div className="studio-parent-feedback-group" key={String(isDuplicate)} aria-hidden={isDuplicate || undefined}>
+                      {parentTestimonials.map((testimonial) => (
+                        <figure className="studio-parent-testimonial" key={testimonial}>
+                          <blockquote>“{testimonial}”</blockquote>
+                          <figcaption>Artshine Parent</figcaption>
+                        </figure>
+                      ))}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </SectionReveal>
         </div>
       </section>
 

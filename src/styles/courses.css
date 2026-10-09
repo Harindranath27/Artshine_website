@@ -4,7 +4,7 @@
    1. EDITORIAL ART HERO (Large Real Artwork Composition, Layered Paper, Tape, Paint & Doodles)
    2. CHAPTER 01 — DRAW • SHADE • SKETCH (Editorial craft board, 5 courses)
    3. TRANSITION 1 (Hand-drawn pencil line travels into watercolour wash)
-   4. CHAPTER 02 — PAINT WITH COLOUR (3 tactile medium compositions: Watercolour, Acrylic, Pastels)
+   4. CHAPTER 02 — PAINT WITH COLOUR (Acrylic Painting)
    5. TRANSITION 2 (Watercolour bleed into geometric mandala motif)
    6. CHAPTER 03 — PATTERNS • CULTURE • IMAGINATION (Museum exhibition displays, 2 courses)
    7. BIG ARTISTIC MOMENT ("There is no one way to make art.")
@@ -173,7 +173,7 @@
 /* Main Large Art Presentation Card */
 .hero-art-main-display {
   background: #FFFFFF;
-  padding: 16px 16px 26px;
+  padding: 16px;
   border-radius: 16px;
   box-shadow: 
     0 24px 50px -12px rgba(15, 32, 56, 0.18),
@@ -207,36 +207,17 @@
   display: block;
 }
 
-.hero-art-caption-strip {
-  margin-top: 14px;
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  font-family: var(--font-brush);
-  font-size: 1.3rem;
-  color: var(--text-primary);
-}
-
-.hero-art-caption-strip .art-medium-label {
-  font-size: 0.85rem;
-  font-family: var(--font-body);
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--text-muted);
-}
-
 /* Satellite pinned artwork layer */
 .hero-art-satellite-layer {
   position: absolute;
   top: -10px;
   right: 15px;
   background: #FFFFFF;
-  padding: 10px 10px 16px;
+  padding: 10px;
   border-radius: 10px;
   box-shadow: 0 14px 30px -6px rgba(15, 32, 56, 0.16);
   border: 1px solid rgba(15, 32, 56, 0.08);
-  width: 160px;
+  width: 220px;
   transform: rotate(6deg);
   z-index: 3;
   transition: transform 0.4s ease;
@@ -248,33 +229,10 @@
 
 .hero-art-satellite-layer img {
   width: 100%;
-  aspect-ratio: 1/1;
+  aspect-ratio: 4/3;
   object-fit: cover;
   border-radius: 6px;
   display: block;
-}
-
-/* Handwritten studio note pinned at bottom */
-.hero-art-studio-note {
-  position: absolute;
-  bottom: 5px;
-  left: 10px;
-  background: #FFFBEB;
-  border: 1px solid rgba(255, 183, 3, 0.45);
-  padding: 0.75rem 1.15rem;
-  border-radius: 8px;
-  box-shadow: 0 8px 22px rgba(15, 32, 56, 0.08);
-  transform: rotate(-4deg);
-  z-index: 4;
-  max-width: 210px;
-}
-
-.hero-art-studio-note p {
-  font-family: var(--font-brush);
-  font-size: 1.15rem;
-  line-height: 1.3;
-  color: #78350F;
-  margin: 0;
 }
 
 /* ==========================================================================
@@ -465,7 +423,7 @@
 
 /* ==========================================================================
    4. CHAPTER 02 — PAINT WITH COLOUR
-   Courses: Watercolour Painting, Acrylic Painting, Oil Pastels
+   Courses: Acrylic Painting
    Atmosphere: Fluid painterly paper, colour bleed washes
    ========================================================================== */
 .cb-chapter-painting-bg {
@@ -806,18 +764,13 @@
 @media (max-width: 640px) {
   .hero-art-main-display {
     width: 290px;
-    padding: 12px 12px 20px;
+    padding: 12px;
   }
 
   .hero-art-satellite-layer {
-    width: 130px;
+    width: min(48vw, 180px);
     right: 5px;
     top: -15px;
-  }
-
-  .hero-art-studio-note {
-    bottom: -10px;
-    left: 5px;
   }
 
   .catalogue-hero-actions {

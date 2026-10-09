@@ -1,11 +1,17 @@
-import React, { useState } from 'react';
-import { X, CheckCircle2 } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+import { X, CheckCircle2, MessageCircle, Mail } from 'lucide-react';
+import { ARTSHINE_CONTACT, getCourseWhatsAppUrl } from '../../config/artshineContact';
 
 export const EnquiryModal = ({ isOpen, onClose, defaultCourse = '' }) => {
   const [submitted, setSubmitted] = useState(false);
-  const [course, setCourse] = useState(defaultCourse || 'Drawing');
+  const [course, setCourse] = useState('');
+
+  useEffect(() => {
+    setCourse(defaultCourse);
+  }, [defaultCourse, isOpen]);
 
   if (!isOpen) return null;
+  const whatsappUrl = getCourseWhatsAppUrl(defaultCourse);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -60,26 +66,48 @@ export const EnquiryModal = ({ isOpen, onClose, defaultCourse = '' }) => {
                 <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, marginBottom: '0.3rem' }}>
                   Interested Discipline *
                 </label>
-                <select
-                  value={course}
-                  onChange={(e) => setCourse(e.target.value)}
-                  style={{
-                    width: '100%',
-                    height: '42px',
-                    border: '1.5px solid rgba(15, 32, 56, 0.15)',
-                    borderRadius: 'var(--radius-sm)',
-                    padding: '0 0.85rem',
-                    fontFamily: 'inherit',
-                    background: '#FFF',
-                  }}
-                >
-                  <option value="Drawing">Drawing & Line Discipline</option>
-                  <option value="Painting">Painting & Color Harmonies</option>
-                  <option value="Craft">Craft & Tactile Arts</option>
-                  <option value="Creative Learning">Creative Learning & Visual Thinking</option>
-                  <option value="Online Classes">Online Classes</option>
-                  <option value="Offline Classes">Offline Classes</option>
-                </select>
+                {defaultCourse ? (
+                  <input
+                    type="text"
+                    name="course"
+                    value={defaultCourse}
+                    readOnly
+                    required
+                    style={{
+                      width: '100%',
+                      height: '42px',
+                      border: '1.5px solid rgba(15, 32, 56, 0.15)',
+                      borderRadius: 'var(--radius-sm)',
+                      padding: '0 0.85rem',
+                      fontFamily: 'inherit',
+                      background: '#F7F8FA',
+                      color: 'var(--text-primary)',
+                    }}
+                  />
+                ) : (
+                  <select
+                    value={course}
+                    onChange={(e) => setCourse(e.target.value)}
+                    required
+                    style={{
+                      width: '100%',
+                      height: '42px',
+                      border: '1.5px solid rgba(15, 32, 56, 0.15)',
+                      borderRadius: 'var(--radius-sm)',
+                      padding: '0 0.85rem',
+                      fontFamily: 'inherit',
+                      background: '#FFF',
+                    }}
+                  >
+                    <option value="">Select an interested discipline</option>
+                    <option value="Drawing">Drawing & Line Discipline</option>
+                    <option value="Painting">Painting & Color Harmonies</option>
+                    <option value="Craft">Craft & Tactile Arts</option>
+                    <option value="Creative Learning">Creative Learning & Visual Thinking</option>
+                    <option value="Online Classes">Online Classes</option>
+                    <option value="Offline Classes">Offline Classes</option>
+                  </select>
+                )}
               </div>
 
               <div style={{ marginBottom: '1.25rem' }}>
@@ -101,19 +129,47 @@ export const EnquiryModal = ({ isOpen, onClose, defaultCourse = '' }) => {
                 />
               </div>
 
-              <button type="submit" className="btn btn-primary" style={{ width: '100%' }}>
-                Send Batch Enquiry
-              </button>
+              {defaultCourse ? (
+                <div style={{ display: 'grid', gap: '0.65rem' }}>
+                  <a
+                    href={whatsappUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn-primary"
+                    style={{ width: '100%', justifyContent: 'center', display: 'flex', alignItems: 'center', gap: '0.5rem' }}
+                    aria-label={`Enquire via WhatsApp about ${defaultCourse}`}
+                  >
+                    <MessageCircle size={17} /> Enquire via WhatsApp
+                  </a>
+                  {ARTSHINE_CONTACT.email ? (
+                    <a
+                      href={`mailto:${ARTSHINE_CONTACT.email}?subject=${encodeURIComponent(`Enquiry about ${defaultCourse}`)}`}
+                      className="btn btn-secondary"
+                      style={{ width: '100%', justifyContent: 'center', display: 'flex', alignItems: 'center', gap: '0.5rem' }}
+                    >
+                      <Mail size={17} /> Enquire via Email
+                    </a>
+                  ) : (
+                    <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.4rem', color: 'var(--text-secondary)', fontSize: '0.8rem' }}>
+                      <Mail size={15} /> Email enquiries coming soon
+                    </span>
+                  )}
+                </div>
+              ) : (
+                <button type="submit" className="btn btn-primary" style={{ width: '100%' }}>
+                  Send Batch Enquiry
+                </button>
+              )}
             </form>
           </>
         ) : (
           <div style={{ textAlign: 'center', padding: '1.5rem 0' }}>
             <CheckCircle2 size={48} color="#00A896" style={{ margin: '0 auto 0.75rem' }} />
             <h4 style={{ fontFamily: 'var(--font-brush)', fontSize: '1.8rem', color: 'var(--text-primary)', marginBottom: '0.4rem' }}>
-              Enquiry Received
+              Thank you for your interest
             </h4>
             <p style={{ fontSize: '0.88rem', color: 'var(--text-secondary)', marginBottom: '1.5rem' }}>
-              Thank you for connecting. Our team will get back to you with schedule and enrolment details.
+              Thank you for your interest in Artshine classes.
             </p>
             <button className="btn btn-secondary btn-sm" onClick={handleClose}>
               Done

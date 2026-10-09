@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
+import ScrollToTop from './components/common/ScrollToTop';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 import EnquiryModal from './components/layout/EnquiryModal';
@@ -19,8 +20,14 @@ export function App() {
     setEnquiryOpen(true);
   };
 
+  const handleCloseEnquire = () => {
+    setEnquiryOpen(false);
+    setSelectedCourse('');
+  };
+
   return (
     <div className="artshine-app">
+      <ScrollToTop />
       <Header onOpenEnquire={handleOpenEnquire} />
 
       <main className="main-content">
@@ -48,7 +55,7 @@ export function App() {
 
       <EnquiryModal
         isOpen={enquiryOpen}
-        onClose={() => setEnquiryOpen(false)}
+        onClose={handleCloseEnquire}
         defaultCourse={selectedCourse}
       />
     </div>

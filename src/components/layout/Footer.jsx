@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { MessageCircle, Mail, ArrowUpRight } from 'lucide-react';
+import { ARTSHINE_CONTACT } from '../../config/artshineContact';
 
 /* Inline Instagram icon — lucide-react in this project does not export Instagram */
 const InstagramIcon = ({ size = 14 }) => (
@@ -147,12 +148,8 @@ export const Footer = () => {
               </h4>
               <ul className="footer-nav-list">
                 <li className="footer-nav-item">
-                  {/*
-                    Instagram: link structure preserved.
-                    Real handle to be added by client.
-                  */}
                   <a
-                    href="https://instagram.com"
+                    href={ARTSHINE_CONTACT.instagramUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Artshine on Instagram"
@@ -163,12 +160,8 @@ export const Footer = () => {
                   </a>
                 </li>
                 <li className="footer-nav-item">
-                  {/*
-                    WhatsApp: link structure preserved.
-                    Real number to be added by client via https://wa.me/[number]
-                  */}
                   <a
-                    href="https://wa.me/"
+                    href={ARTSHINE_CONTACT.whatsappUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Chat with Artshine on WhatsApp"
@@ -179,14 +172,18 @@ export const Footer = () => {
                   </a>
                 </li>
                 <li className="footer-nav-item">
-                  <a
-                    href="mailto:hello@artshine.in"
-                    aria-label="Email Artshine"
-                  >
-                    <Mail size={14} style={{ flexShrink: 0, opacity: 0.8 }} />
-                    Email
-                    <ArrowUpRight size={13} className="footer-link-arrow" />
-                  </a>
+                  {ARTSHINE_CONTACT.email ? (
+                    <a href={`mailto:${ARTSHINE_CONTACT.email}`} aria-label="Email Artshine">
+                      <Mail size={14} style={{ flexShrink: 0, opacity: 0.8 }} />
+                      Email
+                      <ArrowUpRight size={13} className="footer-link-arrow" />
+                    </a>
+                  ) : (
+                    <span className="footer-email-pending" aria-label="Email enquiries coming soon" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.45rem' }}>
+                      <Mail size={14} style={{ flexShrink: 0, opacity: 0.8 }} />
+                      Email enquiries coming soon
+                    </span>
+                  )}
                 </li>
               </ul>
             </div>

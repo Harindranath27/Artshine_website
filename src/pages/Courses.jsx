@@ -15,7 +15,7 @@ import '../styles/courses.css';
  * big artistic moment, and final enquiry.
  * 
  * Modernized Editorial Art Hero:
- * - Large real Artshine artwork (Botanical watercolor study)
+ * - Large student artwork and supporting art-materials image
  * - Layered craft paper backing
  * - Washi tape and pins
  * - Handwritten studio annotations
@@ -77,7 +77,7 @@ export const Courses = ({ onOpenEnquire }) => {
             </div>
           </motion.div>
 
-          {/* Right Editorial Artwork Composition (One Large Real Artwork + Paper Layers) */}
+          {/* Right Editorial Composition (Student Artwork + Art Materials) */}
           <motion.div
             className="catalogue-hero-composition"
             initial={{ opacity: 0, scale: 0.94 }}
@@ -87,19 +87,15 @@ export const Courses = ({ onOpenEnquire }) => {
             {/* Layered craft mounting sheet */}
             <div className="hero-craft-underlay" />
 
-            {/* Main Large Artwork Presentation */}
+            {/* Main Large Student Artwork Presentation */}
             <div className="hero-art-main-display">
               <div className="art-washi-tape tape-coral" style={{ top: '-11px', left: '25px', width: '70px' }} />
               <div className="hero-art-main-image-wrap">
                 <img
-                  src="/images/art_sunflower.jpg"
-                  alt="Sunflower botanical watercolor study by Artshine student"
+                  src="/images/course/HERO1.jpeg"
+                  alt="Students presenting their artwork"
                   loading="eager"
                 />
-              </div>
-              <div className="hero-art-caption-strip">
-                <span>Botanical Harmony</span>
-                <span className="art-medium-label">Watercolour</span>
               </div>
             </div>
 
@@ -107,15 +103,10 @@ export const Courses = ({ onOpenEnquire }) => {
             <div className="hero-art-satellite-layer">
               <div className="art-washi-tape tape-teal" style={{ top: '-9px', right: '15px', width: '50px', height: '18px' }} />
               <img
-                src="/images/art_folk_bird.jpg"
-                alt="Traditional folk motif study"
+                src="/images/course/HERO2.jpg"
+                alt="Art materials and student artwork"
                 loading="eager"
               />
-            </div>
-
-            {/* Handwritten studio note */}
-            <div className="hero-art-studio-note">
-              <p>✨ "Observation, color & joyful expression"</p>
             </div>
 
             {/* Artistic doodles */}
@@ -133,7 +124,6 @@ export const Courses = ({ onOpenEnquire }) => {
         <div className="cb-chapter-header">
           <span className="cb-chapter-num">01</span>
           <div className="cb-chapter-title-group">
-            <span className="cb-chapter-tag">First Medium</span>
             <h2 className="cb-chapter-title">DRAW • SHADE • SKETCH</h2>
           </div>
         </div>
@@ -150,7 +140,7 @@ export const Courses = ({ onOpenEnquire }) => {
               <div className="metal-paperclip" style={{ top: '-14px', left: '30px' }} />
               <div className="cb-card-img-wrap">
                 <img
-                  src="/images/course_junior_girl_drawing.jpg"
+                  src="/images/course/DRAWING.jpeg"
                   alt="Drawing & Colouring student artwork"
                   loading="lazy"
                 />
@@ -179,7 +169,7 @@ export const Courses = ({ onOpenEnquire }) => {
               <div className="art-washi-tape tape-yellow" style={{ top: '-10px', right: '24px', width: '60px' }} />
               <div className="cb-card-img-wrap">
                 <img
-                  src="/images/art_sketch_portrait.jpg"
+                  src="/images/course/PENCIL.png"
                   alt="Pencil Shading artwork"
                   loading="lazy"
                 />
@@ -208,7 +198,7 @@ export const Courses = ({ onOpenEnquire }) => {
               <div className="art-washi-tape tape-coral" style={{ top: '-10px', left: '24px', width: '60px' }} />
               <div className="cb-card-img-wrap">
                 <img
-                  src="/images/hero_indian_girl_painting.jpg"
+                  src="/images/course/COLOUR PENCIL.jpeg"
                   alt="Colour Pencil Sketching artwork"
                   loading="lazy"
                 />
@@ -237,7 +227,7 @@ export const Courses = ({ onOpenEnquire }) => {
               <div className="metal-paperclip" style={{ top: '-14px', right: '24px' }} />
               <div className="cb-card-img-wrap">
                 <img
-                  src="/images/art_mountain_landscape.jpg"
+                  src="/images/course/OIL.png"
                   alt="Oil Pastels artwork"
                   loading="lazy"
                 />
@@ -266,7 +256,7 @@ export const Courses = ({ onOpenEnquire }) => {
               <div className="art-washi-tape tape-teal" style={{ top: '-10px', left: '24px', width: '60px' }} />
               <div className="cb-card-img-wrap">
                 <img
-                  src="/images/art_folk_bird.jpg"
+                  src="/images/course/DOODLE.jpeg"
                   alt="Doodle Art patterns"
                   loading="lazy"
                 />
@@ -323,48 +313,19 @@ export const Courses = ({ onOpenEnquire }) => {
 
       {/* =========================================================================
           4. CHAPTER 02 — PAINT WITH COLOUR
-          Courses: Watercolour Painting, Acrylic Painting, Oil Pastels
+          Courses: Acrylic Painting
           ========================================================================= */}
       <section id="chapter-02" className="cb-chapter-section cb-chapter-painting-bg">
         <div className="cb-chapter-header">
           <span className="cb-chapter-num">02</span>
           <div className="cb-chapter-title-group">
-            <span className="cb-chapter-tag">Second Medium</span>
             <h2 className="cb-chapter-title">PAINT WITH COLOUR</h2>
           </div>
         </div>
 
-        {/* 3 Distinct Tactile Medium Compositions */}
+        {/* Acrylic Painting remains in the painting chapter; Oil Pastels is listed once above. */}
         <div className="cb-painting-trio-grid">
-          {/* 1. Watercolour Painting (Soft painted translucent paper) */}
-          <SectionReveal delay={0.08}>
-            <motion.article
-              className="cb-paint-card cb-paint-watercolour"
-              style={{ transform: 'rotate(-1.5deg)' }}
-              whileHover={{ rotate: 0 }}
-            >
-              <div className="cb-paint-img-wrap">
-                <img
-                  src="/images/art_sunflower.jpg"
-                  alt="Watercolour Painting botanical washes"
-                  loading="lazy"
-                />
-              </div>
-              <h3 className="cb-card-name">Watercolour Painting</h3>
-              <p className="cb-card-desc">
-                Explore colour, composition and expressive painting through water-based techniques.
-              </p>
-              <button
-                onClick={() => onOpenEnquire('Watercolour Painting')}
-                className="cb-enquire-btn"
-              >
-                <span>Enquire Course</span>
-                <ArrowRight size={15} />
-              </button>
-            </motion.article>
-          </SectionReveal>
-
-          {/* 2. Acrylic Painting (Strong layered canvas composition) */}
+          {/* Acrylic Painting (Strong layered canvas composition) */}
           <SectionReveal delay={0.16}>
             <motion.article
               className="cb-paint-card cb-paint-acrylic"
@@ -373,7 +334,7 @@ export const Courses = ({ onOpenEnquire }) => {
             >
               <div className="cb-paint-img-wrap">
                 <img
-                  src="/images/course_teen_easel_art.jpg"
+                  src="/images/course/ACRYLIC.jpeg"
                   alt="Acrylic Painting canvas layering"
                   loading="lazy"
                 />
@@ -392,33 +353,6 @@ export const Courses = ({ onOpenEnquire }) => {
             </motion.article>
           </SectionReveal>
 
-          {/* 3. Oil Pastels (Textured colorful paper composition) */}
-          <SectionReveal delay={0.24}>
-            <motion.article
-              className="cb-paint-card cb-paint-pastels"
-              style={{ transform: 'rotate(-1.2deg)' }}
-              whileHover={{ rotate: 0 }}
-            >
-              <div className="cb-paint-img-wrap">
-                <img
-                  src="/images/art_mountain_landscape.jpg"
-                  alt="Oil Pastels rich pigment study"
-                  loading="lazy"
-                />
-              </div>
-              <h3 className="cb-card-name">Oil Pastels</h3>
-              <p className="cb-card-desc">
-                Work with creamy pigments, smooth finger blending, and bold color contrasts.
-              </p>
-              <button
-                onClick={() => onOpenEnquire('Oil Pastels')}
-                className="cb-enquire-btn"
-              >
-                <span>Enquire Course</span>
-                <ArrowRight size={15} />
-              </button>
-            </motion.article>
-          </SectionReveal>
         </div>
       </section>
 
@@ -445,7 +379,6 @@ export const Courses = ({ onOpenEnquire }) => {
         <div className="cb-chapter-header">
           <span className="cb-chapter-num">03</span>
           <div className="cb-chapter-title-group">
-            <span className="cb-chapter-tag">Third Medium</span>
             <h2 className="cb-chapter-title">PATTERNS • CULTURE • IMAGINATION</h2>
           </div>
         </div>
@@ -461,7 +394,7 @@ export const Courses = ({ onOpenEnquire }) => {
             >
               <div className="cb-traditional-img-wrap">
                 <img
-                  src="/images/student_art_collection.jpg"
+                  src="/images/course/MADALA.jpeg"
                   alt="Mandala Art intricate concentric patterns"
                   loading="lazy"
                 />
@@ -489,7 +422,7 @@ export const Courses = ({ onOpenEnquire }) => {
             >
               <div className="cb-traditional-img-wrap">
                 <img
-                  src="/images/art_folk_bird.jpg"
+                  src="/images/course/MADHUBANI.jpeg"
                   alt="Madhubani Art traditional Indian folk motifs"
                   loading="lazy"
                 />
