@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { X, CheckCircle2, MessageCircle, Mail } from 'lucide-react';
-import { ARTSHINE_CONTACT, getCourseWhatsAppUrl } from '../../config/artshineContact';
+import { ARTSHINE_CONTACT, getCourseEmailUrl, getCourseWhatsAppUrl } from '../../config/artshineContact';
 
 export const EnquiryModal = ({ isOpen, onClose, defaultCourse = '' }) => {
   const [submitted, setSubmitted] = useState(false);
@@ -12,6 +12,7 @@ export const EnquiryModal = ({ isOpen, onClose, defaultCourse = '' }) => {
 
   if (!isOpen) return null;
   const whatsappUrl = getCourseWhatsAppUrl(defaultCourse);
+  const emailUrl = getCourseEmailUrl(defaultCourse);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -143,7 +144,7 @@ export const EnquiryModal = ({ isOpen, onClose, defaultCourse = '' }) => {
                   </a>
                   {ARTSHINE_CONTACT.email ? (
                     <a
-                      href={`mailto:${ARTSHINE_CONTACT.email}?subject=${encodeURIComponent(`Enquiry about ${defaultCourse}`)}`}
+                      href={emailUrl}
                       className="btn btn-secondary"
                       style={{ width: '100%', justifyContent: 'center', display: 'flex', alignItems: 'center', gap: '0.5rem' }}
                     >

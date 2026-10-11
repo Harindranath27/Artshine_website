@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import {
@@ -10,7 +10,6 @@ import {
 } from 'lucide-react';
 import SectionReveal from '../components/common/SectionReveal';
 import PaintStroke from '../components/common/PaintStroke';
-import ArtDoodle from '../components/common/ArtDoodle';
 import OrganicBlob from '../components/common/OrganicBlob';
 import { ARTSHINE_CONTACT } from '../config/artshineContact';
 import '../styles/contact.css';
@@ -21,9 +20,9 @@ import '../styles/contact.css';
  * Clean, warm, artistic communication experience.
  *
  * Exact 3-Part Architecture:
- * 1. HERO: Simple artistic intro ("Let's Talk Art", warm copy, 1 visual on right)
+ * 1. HERO: Simple, text-led artistic introduction
  * 2. DIRECT CONTACT: WhatsApp / Phone / Email (3 cards with exactly equal dimensions)
- * 3. SIMPLE ENQUIRY FORM: Parent Name, Phone, Email, Course, Mode
+ * 3. SIMPLE ENQUIRY FORM: Name, Phone, Email, Course, Mode
  *
  * Strict Terminology Rules:
  * - NO studio, in-studio, teachers, teaching team, curriculum, discipline, framework, etc.
@@ -46,8 +45,11 @@ export const Contact = () => {
     ? location.state.selectedCourse
     : '';
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState('');
+  const submissionId = useRef(null);
   const [formData, setFormData] = useState({
-    parentName: '',
+    name: '',
     phone: '',
     email: '',
     course: selectedCourse || 'Drawing & Colouring',
@@ -75,12 +77,39 @@ export const Contact = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    submissionId.current = null;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmitted(true);
+    if (isSubmitting) return;
+
+    setIsSubmitting(true);
+    setSubmitError('');
+    try {
+      submissionId.current ||= crypto.randomUUID();
+      const response = await fetch('/api/enquiries', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Submission-Id': submissionId.current,
+        },
+        body: JSON.stringify(formData),
+      });
+      const result = await response.json().catch(() => null);
+
+      if (!response.ok || result?.accepted !== true) {
+        throw new Error(result?.error || 'We could not submit your enquiry. Please try again.');
+      }
+
+      submissionId.current = null;
+      setSubmitted(true);
+    } catch (error) {
+      setSubmitError(error.message || 'A network error prevented submission. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -90,12 +119,11 @@ export const Contact = () => {
           ========================================================================= */}
       <section className="contact-intro-section">
         <OrganicBlob color="#FFB703" size={300} opacity={0.12} blur={55} style={{ top: '-10%', right: '8%' }} />
-        <OrganicBlob color="#E63956" size={240} opacity={0.08} blur={45} style={{ bottom: '-5%', left: '2%' }} />
 
         <div className="container">
           <div className="contact-intro-grid">
-            {/* Left Column: Heading & Warm Copy */}
             <motion.div
+              className="contact-intro-copy"
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
@@ -117,34 +145,6 @@ export const Contact = () => {
               </p>
             </motion.div>
 
-            {/* Right Column: One Artistic Visual */}
-            <motion.div
-              className="contact-intro-artwork-wrapper"
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.65, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
-            >
-              <div style={{ position: 'absolute', top: '-16px', right: '12px', zIndex: 12 }}>
-                <ArtDoodle type="star" color="#FFB703" size={28} />
-              </div>
-
-              <div className="contact-intro-artwork-card">
-                <div className="contact-washi-tape tape-coral" style={{ top: '-8px', left: '25%', width: '90px', transform: 'rotate(-2deg)' }} />
-
-                <div className="contact-intro-img-frame">
-                  <img
-                    src="/images/art_sunflower.jpg"
-                    alt="Artshine Botanical Artwork Study"
-                    loading="eager"
-                  />
-                </div>
-
-                <div className="contact-intro-art-caption">
-                  <span>Botanical Study</span>
-                  <span className="contact-intro-art-tag">Artshine</span>
-                </div>
-              </div>
-            </motion.div>
           </div>
         </div>
       </section>
@@ -236,7 +236,7 @@ export const Contact = () => {
 
       {/* =========================================================================
           3. SIMPLE ENQUIRY FORM
-          Only: Parent Name, Phone, Email, Course (exact list), Mode (Online/Offline)
+          Only: Name, Phone, Email, Course (exact list), Mode (Online/Offline)
           ========================================================================= */}
       <section className="contact-form-section" id="enquiry-form-section" tabIndex={-1}>
         <div className="container">
@@ -257,17 +257,18 @@ export const Contact = () => {
 
                   <form onSubmit={handleSubmit}>
                     <div className="art-form-stack">
-                      {/* Parent / Guardian Name */}
+                      {/* Enquirer's Name */}
                       <div>
-                        <label className="art-input-label" htmlFor="parentName">
-                          <span>Parent / Guardian Name <span className="req">*</span></span>
+                        <label className="art-input-label" htmlFor="name">
+                          <span>Name <span className="req">*</span></span>
                         </label>
                         <input
-                          id="parentName"
-                          name="parentName"
+                          id="name"
+                          name="name"
                           type="text"
                           required
-                          value={formData.parentName}
+                          disabled={isSubmitting}
+                          value={formData.name}
                           onChange={handleChange}
                           placeholder="Your full name"
                           className="art-text-input"
@@ -285,6 +286,7 @@ export const Contact = () => {
                             name="phone"
                             type="tel"
                             required
+                            disabled={isSubmitting}
                             value={formData.phone}
                             onChange={handleChange}
                             placeholder="Contact phone or WhatsApp"
@@ -301,6 +303,7 @@ export const Contact = () => {
                             name="email"
                             type="email"
                             required
+                            disabled={isSubmitting}
                             value={formData.email}
                             onChange={handleChange}
                             placeholder="name@domain.com"
@@ -317,6 +320,7 @@ export const Contact = () => {
                         <select
                           id="course"
                           name="course"
+                          disabled={isSubmitting}
                           value={formData.course}
                           onChange={handleChange}
                           className="art-select-input"
@@ -341,6 +345,7 @@ export const Contact = () => {
                         <select
                           id="mode"
                           name="mode"
+                          disabled={isSubmitting}
                           value={formData.mode}
                           onChange={handleChange}
                           className="art-select-input"
@@ -350,8 +355,13 @@ export const Contact = () => {
                         </select>
                       </div>
 
-                      <button type="submit" className="art-submit-btn">
-                        Send Enquiry <Send size={15} />
+                      {submitError && (
+                        <p role="alert" style={{ margin: 0, color: '#B42318', fontSize: '0.9rem' }}>
+                          {submitError}
+                        </p>
+                      )}
+                      <button type="submit" className="art-submit-btn" disabled={isSubmitting}>
+                        {isSubmitting ? 'Sending…' : 'Send Enquiry'} <Send size={15} />
                       </button>
                     </div>
                   </form>
@@ -362,16 +372,18 @@ export const Contact = () => {
                   <div className="success-check-icon">
                     <CheckCircle2 size={32} />
                   </div>
-                  <h3 className="success-title">Enquiry Received!</h3>
+                  <h3 className="success-title">Enquiry Submitted</h3>
                   <p className="success-desc">
-                    Thank you for reaching out to Artshine. We have received your details and will get in touch with you shortly.
+                    Thank you for reaching out to Artshine. Your enquiry was accepted for email delivery. If you do not hear from us, please contact Artshine directly.
                   </p>
                   <button
                     className="btn btn-secondary btn-sm"
                     onClick={() => {
                       setSubmitted(false);
+                      setSubmitError('');
+                      submissionId.current = null;
                       setFormData({
-                        parentName: '',
+                        name: '',
                         phone: '',
                         email: '',
                         course: 'Drawing & Colouring',

@@ -5,6 +5,7 @@ import {
   ArrowRight,
   Sparkles,
   Heart,
+  ExternalLink,
 } from 'lucide-react';
 import PaintStroke from '../components/common/PaintStroke';
 import ArtDoodle from '../components/common/ArtDoodle';
@@ -386,6 +387,30 @@ export const Home = ({ onOpenEnquire }) => {
                   ))}
                 </div>
               </div>
+            </div>
+          </SectionReveal>
+        </div>
+      </section>
+
+      <section className="studio-feedback-invite" aria-labelledby="feedback-invite-title">
+        <div className="container">
+          <SectionReveal>
+            <div className="studio-feedback-invite-inner">
+              <span className="studio-feedback-invite-mark" aria-hidden="true">✳</span>
+              <div>
+                <h2 id="feedback-invite-title">Your Feedback Matters</h2>
+                <p>
+                  We’d love to hear about your experience with Artshine. Your feedback helps us make every creative learning experience even better.
+                </p>
+              </div>
+              <a
+                className="studio-feedback-invite-link"
+                href="https://forms.gle/oSfZkSccUrP22An58"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Share Your Feedback <ExternalLink size={15} aria-hidden="true" />
+              </a>
             </div>
           </SectionReveal>
         </div>

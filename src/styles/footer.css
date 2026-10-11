@@ -113,9 +113,6 @@
 .footer-logo-link {
   display: inline-block;
   margin-bottom: 0.85rem;
-  padding: 0.3rem 0.4rem;
-  border-radius: 6px;
-  background: #FAF8F2;
   transition: opacity 0.2s ease;
 }
 
@@ -129,6 +126,9 @@
   max-width: min(100%, 128px);
   object-fit: contain;
   display: block;
+  padding: 2px 3px;
+  border-radius: 3px;
+  background: #FAF8F2;
 }
 
 /* "Learn. Create. Sparkle." in the brand brush font */
