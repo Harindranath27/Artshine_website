@@ -1,28 +1,20 @@
-import React, { useState } from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
+import React from 'react';
+import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import ScrollToTop from './components/common/ScrollToTop';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
-import EnquiryModal from './components/layout/EnquiryModal';
 import Home from './pages/Home';
 import Courses from './pages/Courses';
 import Students from './pages/Students';
 import Contact from './pages/Contact';
 
 export function App() {
-  const [enquiryOpen, setEnquiryOpen] = useState(false);
-  const [selectedCourse, setSelectedCourse] = useState('');
   const location = useLocation();
+  const navigate = useNavigate();
 
   const handleOpenEnquire = (courseName = '') => {
-    setSelectedCourse(courseName);
-    setEnquiryOpen(true);
-  };
-
-  const handleCloseEnquire = () => {
-    setEnquiryOpen(false);
-    setSelectedCourse('');
+    navigate('/contact', { state: { selectedCourse: courseName, focusEnquiry: true } });
   };
 
   return (
@@ -53,11 +45,6 @@ export function App() {
 
       <Footer />
 
-      <EnquiryModal
-        isOpen={enquiryOpen}
-        onClose={handleCloseEnquire}
-        defaultCourse={selectedCourse}
-      />
     </div>
   );
 }

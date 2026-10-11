@@ -300,6 +300,7 @@
    ========================================================================== */
 .contact-form-section {
   position: relative;
+  scroll-margin-top: 3rem;
   padding: clamp(2.5rem, 5vw, 4rem) 0 clamp(1.75rem, 3vw, 2.5rem);
   background: #FAF8F2;
 }

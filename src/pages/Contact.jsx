@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import {
   MessageCircle,
@@ -29,14 +30,48 @@ import '../styles/contact.css';
  * - ONLY Artshine, students, children, classes, online classes, offline classes
  */
 export const Contact = () => {
+  const location = useLocation();
+  const courseOptions = [
+    'Drawing & Colouring',
+    'Pencil Shading',
+    'Colour Pencil Sketching',
+    'Oil Pastels',
+    'Doodle Art',
+    'Mandala Art',
+    'Madhubani Art',
+    'Water Colour Painting',
+    'Acrylic Painting',
+  ];
+  const selectedCourse = courseOptions.includes(location.state?.selectedCourse)
+    ? location.state.selectedCourse
+    : '';
   const [submitted, setSubmitted] = useState(false);
   const [formData, setFormData] = useState({
     parentName: '',
     phone: '',
     email: '',
-    course: 'Drawing & Colouring',
+    course: selectedCourse || 'Drawing & Colouring',
     mode: 'Online',
   });
+
+  useEffect(() => {
+    if (!location.state?.focusEnquiry) return;
+
+    const formSection = document.getElementById('enquiry-form-section');
+    if (!formSection) return;
+
+    const timer = window.setTimeout(() => {
+      formSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 400);
+    return () => window.clearTimeout(timer);
+  }, [location.key]);
+
+  useEffect(() => {
+    setFormData((prev) => ({
+      ...prev,
+      course: selectedCourse || 'Drawing & Colouring',
+    }));
+  }, [selectedCourse]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -203,7 +238,7 @@ export const Contact = () => {
           3. SIMPLE ENQUIRY FORM
           Only: Parent Name, Phone, Email, Course (exact list), Mode (Online/Offline)
           ========================================================================= */}
-      <section className="contact-form-section" id="enquiry-form-section">
+      <section className="contact-form-section" id="enquiry-form-section" tabIndex={-1}>
         <div className="container">
           <SectionReveal>
             <div className="contact-enquiry-sheet">
