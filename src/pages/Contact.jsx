@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import {
@@ -6,12 +6,11 @@ import {
   Phone,
   Mail,
   Send,
-  CheckCircle2,
 } from 'lucide-react';
 import SectionReveal from '../components/common/SectionReveal';
 import PaintStroke from '../components/common/PaintStroke';
 import OrganicBlob from '../components/common/OrganicBlob';
-import { ARTSHINE_CONTACT } from '../config/artshineContact';
+import { ARTSHINE_CONTACT, getEnquiryFormEmailUrl } from '../config/artshineContact';
 import '../styles/contact.css';
 
 /**
@@ -45,9 +44,6 @@ export const Contact = () => {
     ? location.state.selectedCourse
     : '';
   const [submitted, setSubmitted] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitError, setSubmitError] = useState('');
-  const submissionId = useRef(null);
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -77,39 +73,15 @@ export const Contact = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    submissionId.current = null;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    if (isSubmitting) return;
+    if (submitted) return;
 
-    setIsSubmitting(true);
-    setSubmitError('');
-    try {
-      submissionId.current ||= crypto.randomUUID();
-      const response = await fetch('/api/enquiries', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'X-Submission-Id': submissionId.current,
-        },
-        body: JSON.stringify(formData),
-      });
-      const result = await response.json().catch(() => null);
-
-      if (!response.ok || result?.accepted !== true) {
-        throw new Error(result?.error || 'We could not submit your enquiry. Please try again.');
-      }
-
-      submissionId.current = null;
-      setSubmitted(true);
-    } catch (error) {
-      setSubmitError(error.message || 'A network error prevented submission. Please try again.');
-    } finally {
-      setIsSubmitting(false);
-    }
+    window.location.href = getEnquiryFormEmailUrl(formData);
+    setSubmitted(true);
   };
 
   return (
@@ -251,7 +223,7 @@ export const Contact = () => {
                     <span className="sheet-eyebrow">Enquiry</span>
                     <h2 className="sheet-title">Send Artshine a Note</h2>
                     <p className="sheet-subtitle">
-                      Share your details and class interest, and we will get back to you promptly.
+                      Share your details and class interest. We’ll prepare an email for you to review and send.
                     </p>
                   </div>
 
@@ -267,7 +239,6 @@ export const Contact = () => {
                           name="name"
                           type="text"
                           required
-                          disabled={isSubmitting}
                           value={formData.name}
                           onChange={handleChange}
                           placeholder="Your full name"
@@ -286,7 +257,6 @@ export const Contact = () => {
                             name="phone"
                             type="tel"
                             required
-                            disabled={isSubmitting}
                             value={formData.phone}
                             onChange={handleChange}
                             placeholder="Contact phone or WhatsApp"
@@ -303,7 +273,6 @@ export const Contact = () => {
                             name="email"
                             type="email"
                             required
-                            disabled={isSubmitting}
                             value={formData.email}
                             onChange={handleChange}
                             placeholder="name@domain.com"
@@ -320,7 +289,6 @@ export const Contact = () => {
                         <select
                           id="course"
                           name="course"
-                          disabled={isSubmitting}
                           value={formData.course}
                           onChange={handleChange}
                           className="art-select-input"
@@ -345,7 +313,6 @@ export const Contact = () => {
                         <select
                           id="mode"
                           name="mode"
-                          disabled={isSubmitting}
                           value={formData.mode}
                           onChange={handleChange}
                           className="art-select-input"
@@ -355,33 +322,27 @@ export const Contact = () => {
                         </select>
                       </div>
 
-                      {submitError && (
-                        <p role="alert" style={{ margin: 0, color: '#B42318', fontSize: '0.9rem' }}>
-                          {submitError}
-                        </p>
-                      )}
-                      <button type="submit" className="art-submit-btn" disabled={isSubmitting}>
-                        {isSubmitting ? 'Sending…' : 'Send Enquiry'} <Send size={15} />
+                      <button type="submit" className="art-submit-btn">
+                        Prepare Email Enquiry <Send size={15} />
                       </button>
                     </div>
                   </form>
                 </>
               ) : (
-                /* Success Confirmation State */
+                /* Email handoff instructions */
                 <div className="enquiry-success-box">
                   <div className="success-check-icon">
-                    <CheckCircle2 size={32} />
+                    <Mail size={32} />
                   </div>
-                  <h3 className="success-title">Enquiry Submitted</h3>
+                  <h3 className="success-title">Continue in Your Email App</h3>
                   <p className="success-desc">
-                    Thank you for reaching out to Artshine. Your enquiry was accepted for email delivery. If you do not hear from us, please contact Artshine directly.
+                    Your email application should open with your enquiry prefilled. Review it and press Send to submit. If it does not open, contact Artshine at{' '}
+                    <a href={`mailto:${ARTSHINE_CONTACT.email}`}>{ARTSHINE_CONTACT.email}</a>.
                   </p>
                   <button
                     className="btn btn-secondary btn-sm"
                     onClick={() => {
                       setSubmitted(false);
-                      setSubmitError('');
-                      submissionId.current = null;
                       setFormData({
                         name: '',
                         phone: '',

@@ -5,6 +5,23 @@ export const ARTSHINE_CONTACT = {
   email: 'artshineoff@gmail.com',
 };
 
+export const getEnquiryFormEmailUrl = ({ name, phone, email, course, mode }) => {
+  const subject = `Artshine Class Enquiry — ${course}`;
+  const body = [
+    'Hello Artshine Creative Learning,',
+    '',
+    `Name: ${name}`,
+    `Contact number: ${phone}`,
+    `Email address: ${email}`,
+    `Course: ${course}`,
+    `Learning mode: ${mode}`,
+    '',
+    'Please press Send in your email application to submit this enquiry.',
+  ].join('\n');
+
+  return `mailto:${ARTSHINE_CONTACT.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+};
+
 export const getCourseEmailUrl = (courseName = '') => {
   const subject = courseName
     ? `Enquiry for ${courseName} — Artshine Creative Learning`
